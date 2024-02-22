@@ -2,8 +2,6 @@ import { useState } from 'react'
 import reactLogo from '../public/assets/react.svg'
 import viteLogo from '../public/vite.svg'
 import './App.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import * as bootstrap from 'bootstrap'; // Import all of Bootstrap's JS
 
 function App() {
   const [count, setCount] = useState(0)
