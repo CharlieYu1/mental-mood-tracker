@@ -6,7 +6,7 @@ const cors = require('cors')
 
 const app = express()
 
-const mongoUrl = config.MONGODB_URI
+const mongoUrl = process.env.MONGODB_URI
 mongoose.connect(mongoUrl)
 
 app.use(express.json())
@@ -17,6 +17,11 @@ if (process.env.NODE_ENV === 'test') {
     const testingRouter = require('./controllers/testing')
     app.use('/api/testing', testingRouter)
 }
+
+// test route
+app.get('/', (req, res) => {
+    res.json({ "message": "success" })
+})
 
 // Connection port for app
 const PORT = process.env.PORT || 3000;
