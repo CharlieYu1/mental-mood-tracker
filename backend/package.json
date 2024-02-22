@@ -1,0 +1,11 @@
+{
+  "name": "mental-mood-tracker-backend",
+  "version": "1.0.0",
+  "description": "A backend for the mental mood tracker app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Charlie Yu, Celia Chan",
+  "license": "ISC"
+}
