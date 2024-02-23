@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
     username: { type: String, required: true, unique: true },
-    passwordHash: { type: String, required: true },
+    password: { type: String, required: true },
     email: { type: String, required: true, unique: true,
         validate: {
             validator: function (value) {
@@ -12,7 +12,7 @@ const userSchema = new Schema({
             message: 'Invalid email address format',
         },
     },
-    activityLogs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'ActivityLog' }]
+    activityLogs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'ActivityLog' }],
     moodLogs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'MoodLog' }],
     isAdmin: { type: Boolean }
 })
