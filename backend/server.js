@@ -4,19 +4,24 @@ const logger = require('morgan')
 require('dotenv').config()
 const cors = require('cors')
 
+const User = require('./models/UsersModel')
+
 const app = express()
 
-const mongoUrl = process.env.MONGODB_URI
+const mongoUrl = process.env.NODE_ENV === 'test' ? process.env.TEST_MONGODB_URI : process.env.MONGODB_URI
+
 mongoose.connect(mongoUrl)
+
+console.log(process.env.NODE_ENV)
 
 app.use(express.json())
 app.use(cors())
 app.use(logger("dev"))
 
-if (process.env.NODE_ENV === 'test') {
-    const testingRouter = require('./controllers/testing')
-    app.use('/api/testing', testingRouter)
-}
+// if (process.env.NODE_ENV === 'test') {
+//     const testingRouter = require('./controllers/testing')
+//     app.use('/api/testing', testingRouter)
+// }
 
 // test route
 app.get('/', (req, res) => {
