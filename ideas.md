@@ -13,6 +13,8 @@
 - Landing Page
 - About
 - Resources (Articles for mental health)
+  - Youtube API
+  - outside articles
 - Forum (?)
 - Login/Signup button
 
