@@ -15,6 +15,7 @@
 - Resources (Articles for mental health)
   - Youtube API
   - outside articles
+  - Spotify API (?)
 - Forum (?)
 - Login/Signup button
 
