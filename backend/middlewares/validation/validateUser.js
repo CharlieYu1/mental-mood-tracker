@@ -9,21 +9,24 @@ exports.validateRegister = [
     body("password").isLength({ min: 8 })
     .withMessage("must be at least 8 characters").trim().escape(),
 
-    body("email").isEmail().withMessage("isn't valid").trim.escape(),
+    body("email").isEmail().withMessage("isn't valid").trim().escape(),
 
     (req, res, next) => {
+        
         const errors = validationResult(req)
+        console.log(req.body)
+        console.log(errors)
 
         if (!errors.isEmpty()) {
             let field = errors.errors[0].param;
-            let message = errors[0].msg;
+            let message = errors.errors[0].msg;
             let errorMessage = `${field} ${message}`
-        }
 
-        res.status(400).json({
-            message: errorMessage,
-            errors: errors
-        }) else {
+            res.status(400).json({
+                message: errorMessage,
+                errors: errors
+            })
+        } else {
             next()
         }
     }

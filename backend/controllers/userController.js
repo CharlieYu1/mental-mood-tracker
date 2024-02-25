@@ -10,7 +10,7 @@ exports.createUser = async (req, res, next) => {
             username: req.body.username,
             password: req.body.password,
             email: req.body.email,
-            activityLogs: []
+            activityLogs: [],
             moodLogs: [],
             isAdmin: false
         })
@@ -40,12 +40,12 @@ exports.createUser = async (req, res, next) => {
 
         // 4- encrypt the password and save the new user
         const saltRounds = 12
-        const newUser.password = await bcrypt.hash(req.body.password, saltRounds)
+        newUser.password = await bcrypt.hash(req.body.password, saltRounds)
 
-        const savedUser = await user.save()
+        const savedUser = await newUser.save()
         res.status(201).json(savedUser)
     } catch (error) {
-        response.status(400).json({message: error.message}).end()
+        res.status(400).json({message: error.message}).end()
         next(error)
     }
 
