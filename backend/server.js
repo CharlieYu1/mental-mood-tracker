@@ -6,17 +6,19 @@ const cors = require('cors')
 
 const User = require('./models/UsersModel')
 
+const usersRouter = require('./routes/api/users')
+
 const app = express()
 
 const mongoUrl = process.env.NODE_ENV === 'test' ? process.env.TEST_MONGODB_URI : process.env.MONGODB_URI
 
 mongoose.connect(mongoUrl)
 
-console.log(process.env.NODE_ENV)
-
 app.use(express.json())
 app.use(cors())
 app.use(logger("dev"))
+
+app.use('/api/users', usersRouter)
 
 // if (process.env.NODE_ENV === 'test') {
 //     const testingRouter = require('./controllers/testing')
