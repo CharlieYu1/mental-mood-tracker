@@ -19,8 +19,6 @@ exports.createUser = async (req, res, next) => {
 
     // 1- Check is the username is taken
     await User.findOne({ username: req.body.username }).then((duplicateUser, err) => {
-        console.log("err", err)
-        console.log("duplicateUser", duplicateUser)
         if (err) {
             hasError = true;
             res.status(400).json({
@@ -60,11 +58,41 @@ exports.createUser = async (req, res, next) => {
     }
     if (hasError) { return }
 
-    // 4- encrypt the password and save the new user
+    // 4- encrypt the password
     const saltRounds = 12
     newUser.password = await bcrypt.hash(req.body.password, saltRounds)
 
-    const savedUser = await newUser.save()
-    res.status(201).json(savedUser)
+    // 5- save the new user and generate jwt token to send to user
 
+    newUser.save().then(user => {
+        jwt.sign({
+            id: user.id,
+            isAdmin: user.isAdmin
+        },
+        secret,
+        { expiresIn: 3600 },
+        (err, token) => {
+            console.log("err", err)
+            console.log("token", token)
+            if (err) throw err;
+            else
+                res.json({
+                    token,
+                    message: "Registered Successfully",
+                    user: {
+                        id: user.id,
+                        username: user.username,
+                        email: user.email,
+                        isAdmin: user.isAdmin
+                    }
+                })
+        })
+    }).catch(err => {
+        res.status(400).json({
+            message: "Error registering",
+            err
+        })
+    })
 }
+
+// generate json token and send with user
