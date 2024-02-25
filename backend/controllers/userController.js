@@ -95,4 +95,46 @@ exports.createUser = async (req, res, next) => {
     })
 }
 
-// generate json token and send with user
+exports.login = async (req, res) => {
+    
+    await User.findOne({ username: req.body.username }).then(async (user, err) => {
+        if (err) {
+            return res.json(err);
+        } 
+
+        if (!user) {
+            return res.status(400).json({ message: "Invalid username" })
+        }
+
+        
+        // 1- compare encrypted password with the password provided by user
+        await bcrypt.compare(req.body.password, user.password, (err, isMatch) => {
+            if (err) {
+                return res.status(400).json({ message: "Invalid password" })
+            }
+            if (isMatch) {
+                // 2- generate new token
+                jwt.sign({
+                    id: user.id,
+                    isAdmin: user.isAdmin
+                },
+                secret,  { expiresIn: 3600 },
+                (err, token) => {
+                    if (err) throw err;
+                    else
+                        return res.json({
+                            token, message: "Login Successfully",
+                            user: {
+                                id: user.id,
+                                username: user.username,
+                                email: user.email,
+                                isAdmin: user.isAdmin
+                            }
+                        })
+                })
+            } else {
+                return res.json({success: false, message: "passwords do not match"})
+            }
+        })
+    })
+}
