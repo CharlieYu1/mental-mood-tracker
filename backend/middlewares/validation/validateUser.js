@@ -14,13 +14,11 @@ exports.validateRegister = [
     (req, res, next) => {
         
         const errors = validationResult(req)
-        console.log(req.body)
-        console.log(errors)
 
         if (!errors.isEmpty()) {
-            let field = errors.errors[0].param;
+            let path = errors.errors[0].path;
             let message = errors.errors[0].msg;
-            let errorMessage = `${field} ${message}`
+            let errorMessage = `${path} ${message}`
 
             res.status(400).json({
                 message: errorMessage,
