@@ -29,3 +29,29 @@ exports.validateRegister = [
         }
     }
 ]
+
+exports.validateLogin = [
+    body("username").isLength({ min: 2 })
+    .withMessage("must be at least 2 characters").trim().escape(),
+
+    body("password").isLength({ min: 8 })
+    .withMessage("must be at least 8 characters").trim().escape(),
+
+    (req, res, next) => {
+        
+        const errors = validationResult(req)
+
+        if (!errors.isEmpty()) {
+            let path = errors.errors[0].path;
+            let message = errors.errors[0].msg;
+            let errorMessage = `${path} ${message}`
+
+            res.status(400).json({
+                message: errorMessage,
+                errors: errors
+            })
+        } else {
+            next()
+        }
+    }
+]

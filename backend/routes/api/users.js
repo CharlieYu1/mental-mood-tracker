@@ -5,11 +5,6 @@ const users_validation = require('./../../middlewares/validation/validateUser')
 
 router.post('/signup', users_validation.validateRegister, users_controller.createUser)
 
-
-// TODO: auth
-// TODO: users_controller
-// TODO: users_validation
-
-// TODO: routes and controllers
+router.post('/login', users_validation.validateLogin, users_controller.login)
 
 module.exports = router;
