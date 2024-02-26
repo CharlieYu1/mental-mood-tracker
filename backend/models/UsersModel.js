@@ -5,8 +5,7 @@ const userSchema = new Schema({
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    activityLogs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'ActivityLog' }],
-    moodLogs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'MoodLog' }],
+    dailyLogs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'DailyLog' }],
     isAdmin: { type: Boolean }
 })
 
