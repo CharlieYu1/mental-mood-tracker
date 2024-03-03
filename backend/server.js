@@ -20,10 +20,10 @@ app.use(logger("dev"))
 
 app.use('/api/users', usersRouter)
 
-// if (process.env.NODE_ENV === 'test') {
-//     const testingRouter = require('./controllers/testing')
-//     app.use('/api/testing', testingRouter)
-// }
+if (process.env.NODE_ENV === 'test') {
+    const testingRouter = require('./controllers/testing')
+    app.use('/api/testing', testingRouter)
+}
 
 // test route
 app.get('/', (req, res) => {
