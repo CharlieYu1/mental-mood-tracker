@@ -1,5 +1,40 @@
+/* App.css */
 #root {
   margin: 0;
   padding: 0;
   text-align: center;
+}
+
+:root {
+  --bg-color-primary: #FBF6EB; 
+  --bg-color-secondary: #FBEDD4; 
+  --text-color-dark: #525252;
+  --text-color-white: #ffffff;
+
+  --navbar-text-color: #ffffff;
+  --navbar-bg-color: #FFAE30;
+  --navbar-active-text-color: #FEE080;
+
+  --sidebar-text-color: #525252;
+  --sidebar-bg-color: #FEE080;
+  --sidebar-active-bg-color: #FFAE30;
+  --sidebar-active-text-color: #ffffff;
+
+  --grey: #D4D4D4;
+  --charcoal: #525252;
+  --orange: #FFD15D;
+  --lightorange: #FEE080;
+  --lilac: #9D9DF0;
+  --coral: #FF8891;
+  --turquoise: #6AD6BE;
+  --azure: #559BE0;
+  --cerulean: #80CAFF;
+  --lime: #9ADD65;
+  --chartreuse: #C8E771;
+  --yellow: #FFDE55;
+  --pink: #FF99C3;
+  --pastel: #FFC2DB;
+  --ruby: #FC5765;
+  --taupe: #977E65;
+  --sandstone: #E7D0A5;
 }
