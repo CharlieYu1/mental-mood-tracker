@@ -1,19 +1,19 @@
+// NavBar.jsx
+import "./styles/NavBar.css";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, Button } from "react-bootstrap";
+
+import logo from "/assets/images/MoodTrack_icon.png";
 
 function NavBar() {
 	const [expanded, setExpanded] = useState(false);
 
 	return (
-		<Navbar bg="dark" variant="dark" expand="lg" className="p-2">
+		<Navbar expand="lg" className="mood-nav">
 			<div className="container">
-				<Navbar.Brand
-					as={Link}
-					to="/"
-					className="d-flex align-items-center mb-0 mb-lg-0 text-white text-decoration-none"
-				>
-					<h2>Logo</h2>
+				<Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
+					<img src={logo} className="img-fluid" alt="Logo" />
 				</Navbar.Brand>
 
 				<Navbar.Toggle
@@ -21,35 +21,45 @@ function NavBar() {
 					onClick={() => setExpanded(!expanded)}
 				/>
 
-				<Navbar.Collapse id="navbar-nav" className="justify-content-end">
-					<Nav className="mr-auto">
-						<Nav.Link as={Link} to="/" className="nav-link text-white">
+				<Navbar.Collapse>
+					<Nav className="me-auto">
+						<Nav.Link as={Link} to="/" className="mood-nav-link">
 							Home
 						</Nav.Link>
 
-						<Nav.Link as={Link} to="/dashboard" className="nav-link text-white">
+						<Nav.Link as={Link} to="/dashboard" className="mood-nav-link">
 							Dashboard
 						</Nav.Link>
 
-						<Nav.Link as={Link} to="/log" className="nav-link text-white">
+						<Nav.Link as={Link} to="/log" className="mood-nav-link">
 							Log
 						</Nav.Link>
 
-						<Nav.Link as={Link} to="/resources" className="nav-link text-white">
+						<Nav.Link as={Link} to="/resources" className="mood-nav-link">
 							Resources
 						</Nav.Link>
 
-						<Nav.Link as={Link} to="/about" className="nav-link text-white">
+						<Nav.Link as={Link} to="/about" className="mood-nav-link">
 							About
 						</Nav.Link>
 					</Nav>
 
-					<Button as={Link} to="/register" variant="outline-light" className="ms-3">
-						Signup
-					</Button>
-          <Button as={Link} to="/login" variant="outline-light" className="ms-2">
-						Login
-					</Button>
+					<Nav className="justify-content-end">
+						<Nav.Item>
+							<Nav.Link as={Link} to="/login" className="mood-nav-btn mood-nav-login">
+								Login
+							</Nav.Link>
+						</Nav.Item>
+						<Nav.Item>
+							<Nav.Link
+								as={Link}
+								to="/register"
+								className="mood-nav-btn mood-nav-signup"
+							>
+								Signup
+							</Nav.Link>
+						</Nav.Item>
+					</Nav>
 				</Navbar.Collapse>
 			</div>
 		</Navbar>
