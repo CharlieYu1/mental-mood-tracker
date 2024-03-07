@@ -15,7 +15,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
-    
+    <div className="vh-100">
     <BrowserRouter>
       <NavBar />      
       <Routes>
@@ -28,7 +28,8 @@ function App() {
         <Route path="/resources" element={<Resources />} />
       </Routes>      
       <Footer />    
-    </BrowserRouter>    
+    </BrowserRouter>
+    </div>    
   );
 }
 
