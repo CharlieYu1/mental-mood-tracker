@@ -12,6 +12,7 @@
 .mood-nav-link {
 	margin: 0 0.2rem;
 	color: var(--navbar-text-color) !important;
+	text-align: center;
 }
 
 .mood-nav-link:hover {
