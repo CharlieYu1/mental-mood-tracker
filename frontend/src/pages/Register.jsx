@@ -1,7 +1,11 @@
 //Register page
 import "../components/styles/register.css";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Form, Button, Card } from "react-bootstrap";
+
+import signupService from '../services/signup'
+import { AuthContext } from "../components/AuthContext";
+import { useNavigate } from 'react-router-dom'
 
 function Register() {
 	// states
@@ -10,16 +14,43 @@ function Register() {
 	const [password, setPassword] = useState("");
 	const [verifyPassword, setVerifyPassword] = useState("");
 
-	// handleRegister
-	// may change to pass from parent component
-	const handleRegister = () => {
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const { setToken } = useContext(AuthContext)
+  const navigate = useNavigate()
+
+	// handler for Registration
+	const handleSubmit = async (e) => {
 		// TODO
+    e.preventDefault()
+    try {
+      const response = await signupService.signup({
+        username,
+        email,
+        password,
+        verifyPassword
+      })
+      setToken(response.data.token)
+      localStorage.setItem('token', response.data.token)
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Registration failed:", error.response.data.error)
+      setToken(null)
+      localStorage.removeItem('token')
+
+      // error handling and error message
+      if (error.response && error.response.data) {
+        setErrorMessage(error.response.data)
+      } else {
+        setErrorMessage("An unexpected error occurred. Please try again")
+      }
+    }
 	};
 
 	return (
 		<div className="mood-register">
 			<div className="register-card">
-				<Form>
+				<Form onSubmit={handleSubmit}>
 					<h3>Register Form</h3>
 					<Form.Group className="mt-4 mb-4" controlId="registerForm.ControlInput1">
 						<Form.Label>Username</Form.Label>
