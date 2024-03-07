@@ -1,0 +1,30 @@
+.mood-register {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 92vh;
+}
+
+.register-card {
+	padding: 30px;
+	border: 1px solid var(--sandstone);
+	border-radius: 15px;
+	background-color: #fff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	min-width: 50vw;
+}
+
+h3 {
+	color: var(--azure) !important;
+	text-align: center;
+}
+
+.register-btn {
+	background-color: var(--orange) !important;
+	color: var(--text-color-dark) !important;
+	border: none !important;
+}
+
+.text-error {
+  color: var(--coral) !important;
+}
