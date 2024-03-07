@@ -13,7 +13,23 @@ import Footer from "./components/Footer";
 import './App.css'
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import React, { useState, useEffect } from "react";
+import signupService from './services/signup'
+import loginService from './services/login'
+
 function App() {
+  const [user, setUer] = useState(null);
+
+  // detect existing user that is already logged in
+  useEffect(() => {
+    const loggedUserJSON = window.localStorage.getItem('loggedMoodTrackUser')
+    if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON)
+      setUser(user)
+    }
+  }, [])
+  
+
   return (
     <div className="vh-100">
     <BrowserRouter>

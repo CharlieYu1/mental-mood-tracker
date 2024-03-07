@@ -10,9 +10,9 @@ function Register() {
 	const [password, setPassword] = useState("");
 	const [verifyPassword, setVerifyPassword] = useState("");
 
-	// handleLogin
+	// handleRegister
 	// may change to pass from parent component
-	const handleLogin = () => {
+	const handleRegister = () => {
 		// TODO
 	};
 
