@@ -72,8 +72,6 @@ exports.createUser = async (req, res, next) => {
         secret,
         { expiresIn: 3600 },
         (err, token) => {
-            console.log("err", err)
-            console.log("token", token)
             if (err) throw err;
             else
                 res.json({
