@@ -1,11 +1,12 @@
-.mood-register {
+/* login.css */
+.mood-login {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	min-height: 92vh;
 }
 
-.register-card {
+.login-card {
 	padding: 30px;
 	border: 1px solid var(--sandstone);
 	border-radius: 15px;
@@ -14,17 +15,30 @@
 	min-width: 50vw;
 }
 
-.register-card h3 {
-	color: var(--azure) !important;
+.login-card h3 {
+	color: var(--taupe) !important;
 	text-align: center;
 }
 
-.register-btn {
-	background-color: var(--orange) !important;
-	color: var(--text-color-dark) !important;
+.login-btn {
+	background-color: var(--taupe) !important;	
 	border: none !important;
 }
 
 .text-error {
   color: var(--coral) !important;
+}
+
+.text-forgot,
+.text-link {
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.text-forgot {
+	color: var(--text-color-dark);
+}
+
+.text-link {
+	color: var(--lilac);
 }
