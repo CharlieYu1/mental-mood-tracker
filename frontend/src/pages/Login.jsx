@@ -1,10 +1,10 @@
 //Login page
 import "../components/styles/login.css";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 
-import { loginService } from '../services/user'
+import userService from '../services/user'
 import { AuthContext } from "../components/AuthContext";
 import { useNavigate } from 'react-router-dom'
 
@@ -16,7 +16,7 @@ function Login() {
 
 	const [errorMessage, setErrorMessage] = useState("");
 
-	const { setToken } = useContext(AuthContext)
+	const { setUser, setToken } = useContext(AuthContext)
 	const navigate = useNavigate()
 
 	const handleRememberMeChange = () => {
@@ -28,21 +28,23 @@ function Login() {
 		// TODO
 		e.preventDefault()
 		try {
-			const response = loginService.signup({
+			const response = userService.login({
 				username,
 				password
 			})
-			setToken(response.data.token)
-			localStorage.setItem('token', response.data.token)
+			setToken(response.token)
+			setUser(response.user)
+			localStorage.setItem('token', response.token)
 			navigate("/dashboard")
 		} catch (error) {
-			console.error("Login failed:", error.response.data.error)
+			console.error("Login failed:", error.response.data.message)
 			setToken(null)
+			setUser(null)
 			localStorage.removeItem('token')
 
 			// error handling and error message
-			if (error.response && error.response.data) {
-			setErrorMessage(error.response.data)
+			if (error.response && error.response.data.message) {
+			setErrorMessage(error.response.data.message)
 			} else {
 			setErrorMessage("An unexpected error occurred. Please try again")
 			}
