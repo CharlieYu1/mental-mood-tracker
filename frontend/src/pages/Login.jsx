@@ -4,26 +4,55 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 
+import { loginService } from '../services/user'
+import { AuthContext } from "../components/AuthContext";
+import { useNavigate } from 'react-router-dom'
+
 function Login() {
 	// states
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [rememberMe, setRememberMe] = useState(false);
 
+	const [errorMessage, setErrorMessage] = useState("");
+
+	const { setToken } = useContext(AuthContext)
+	const navigate = useNavigate()
+
 	const handleRememberMeChange = () => {
 			setRememberMe(!rememberMe);
 	};
 
-	// handleLogin
-	// may change to pass from parent component
-	const handleLogin = () => {
+	// handler for Login
+	const handleSubmit = async (e) => {
 		// TODO
+		e.preventDefault()
+		try {
+			const response = loginService.signup({
+				username,
+				password
+			})
+			setToken(response.data.token)
+			localStorage.setItem('token', response.data.token)
+			navigate("/dashboard")
+		} catch (error) {
+			console.error("Login failed:", error.response.data.error)
+			setToken(null)
+			localStorage.removeItem('token')
+
+			// error handling and error message
+			if (error.response && error.response.data) {
+			setErrorMessage(error.response.data)
+			} else {
+			setErrorMessage("An unexpected error occurred. Please try again")
+			}
+		}
 	};
 
 	return (
 		<div className="mood-login">
 			<div className="login-card">
-				<Form>
+				<Form onSubmit={handleSubmit}>
 					<h3>Welcome</h3>
 					<Form.Group className="mt-4 mb-4" controlId="loginForm.ControlInput1">
 						<Form.Label>Username</Form.Label>

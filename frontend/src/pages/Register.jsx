@@ -3,7 +3,7 @@ import "../components/styles/register.css";
 import React, { useState, useContext } from "react";
 import { Form, Button, Card } from "react-bootstrap";
 
-import signupService from '../services/signup'
+import { signupService } from '../services/signup'
 import { AuthContext } from "../components/AuthContext";
 import { useNavigate } from 'react-router-dom'
 
@@ -30,17 +30,17 @@ function Register() {
         password,
         verifyPassword
       })
-      setToken(response.data.token)
-      localStorage.setItem('token', response.data.token)
+      setToken(response.token)
+      localStorage.setItem('token', response.token)
       navigate("/dashboard");
     } catch (error) {
-      console.error("Registration failed:", error.response.data.error)
+      console.error("Registration failed:", error.response.data.message)
       setToken(null)
       localStorage.removeItem('token')
 
       // error handling and error message
-      if (error.response && error.response.data) {
-        setErrorMessage(error.response.data)
+      if (error.response && error.response.data.message) {
+        setErrorMessage(error.response.data.message)
       } else {
         setErrorMessage("An unexpected error occurred. Please try again")
       }
