@@ -1,0 +1,89 @@
+/* memberPage.css */
+
+/* Sidebar style */
+.sidebar {
+	padding: 2rem 0;
+	background-color: var(--sidebar-bg-color);
+	color: var(--sidebar-text-color);
+}
+
+.aside {
+	max-width: 280px !important;
+  background-color: var(--sidebar-bg-color);
+  color: var(--sidebar-text-color);
+}
+
+/* User box style */
+.sidebar-user {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+
+.sidebar-img {
+	margin-bottom: 1rem;
+	width: 180px;
+	align-self: center;
+}
+
+/* Sidebar button style */
+.sidebar-item {
+	display: flex;
+	margin-bottom: 3px;
+	padding: 0 1rem;
+	width: 100%;
+	background-color: var(--sidebar-btn-color);
+	color: var(--sidebar-text-color);
+	border-right: 10px solid;
+	border-color: var(--sidebar-border-color);
+}
+
+.sidebar-item:hover {
+	background-color: var(--sidebar-active-btn-color);
+	color: var(--sidebar-active-text-color);
+	border-color: var(--sidebar-active-border-color);
+}
+
+.sidebar-item a {
+	color: var(--sidebar-text-color);
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+}
+
+.sidebar-item a svg {
+	margin-right: 10px;
+  width: 20px;
+	height: 1.2rem;
+}
+
+.sidebar-item:hover a {
+	color: var(--sidebar-active-text-color);
+}
+
+/* Toggle button style */
+.toggle-button {
+  position: fixed;
+  top: 50%;
+  right: 200;
+  background-color: var(--sidebar-bg-color);
+  color: var(--sidebar-text-color);
+  border: none;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  /* z-index: 10; */
+}
+
+/* .toggle-button.active {
+  display: none;
+} */
+
+/* Content style */
+.content {
+  margin-left: 280px;
+}
+
+.content.sidebar-open {
+  transition: margin-left 0.3s ease;
+}
