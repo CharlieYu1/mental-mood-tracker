@@ -1,8 +1,7 @@
 /* NavBar.css */
 .mood-nav {
 	background-color: var(--navbar-bg-color);
-	font-weight: 500;
-	font-size: 1.2rem;
+	z-index: 10;
 }
 
 .mood-nav img {
@@ -49,6 +48,8 @@
 	color: var(--navbar-text-color) !important;
 }
 
+
+/* Small screen style */
 @media (max-width: 991px) {
 	.mood-nav-login {
 		background-color: rgba(255, 255, 255, 0.2) !important;

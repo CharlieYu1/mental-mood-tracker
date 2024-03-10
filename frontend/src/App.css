@@ -18,8 +18,11 @@
   --navbar-active-color: #559BE0;
 
   --sidebar-text-color: #525252;
-  --sidebar-bg-color: #FEE080;
-  --sidebar-active-bg-color: #FFAE30;
+  --sidebar-bg-color: #FBEDD4;
+  --sidebar-btn-color: #FEE080;
+  --sidebar-border-color: #FFD15D;
+  --sidebar-active-btn-color: #FFAE30;
+  --sidebar-active-border-color: #FEE080;
   --sidebar-active-text-color: #ffffff;
 
   --grey: #D4D4D4;
