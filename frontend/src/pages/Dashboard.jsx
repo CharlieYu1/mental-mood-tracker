@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+//Dashboard page
+import React, { useState, useContext } from "react";
 import "../components/styles/memberPage.css";
 import Sidebar from "../components/sideBar";
 import { Row, Col } from "react-bootstrap";
+import { AuthContext } from "../components/AuthContext";
 
 function Dashboard() {
+  const { user, loading } = useContext(AuthContext);
   const [showSidebar, setShowSidebar] = useState(true);
+  
+  if (loading) {
+    return <div>Loading...</div>
+  }
 
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
-  };
+  };  
 
   return (
     <div>
@@ -24,6 +31,7 @@ function Dashboard() {
         <Col className={`content${showSidebar ? " sidebar-open" : ""}`}>
           {/* Dashboard Content */}
           <p>Dashboard Content Goes Here</p>
+          {user ? <p>Welcome {user.username}!</p> : <p>Login to use the dashboard.</p>}
         </Col>
       </Row>
 

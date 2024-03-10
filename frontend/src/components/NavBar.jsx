@@ -1,13 +1,29 @@
 // NavBar.jsx
 import "./styles/NavBar.css";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, Button } from "react-bootstrap";
 
 import logo from "/assets/images/MoodTrack_icon.png";
 
+import { AuthContext } from "../components/AuthContext";
+import { useNavigate } from 'react-router-dom'
+
 function NavBar() {
 	const [expanded, setExpanded] = useState(false);
+
+	const [errorMessage, setErrorMessage] = useState("");
+
+	const { user, setUser, setToken } = useContext(AuthContext)
+	const navigate = useNavigate()
+
+	const handleLogout = async (e) => {
+		e.preventDefault();
+		setToken(null)
+		setUser(null)
+		localStorage.removeItem('token')
+		navigate("/")
+	}
 
 	return (
 		<Navbar expand="lg" className="mood-nav">
@@ -45,12 +61,12 @@ function NavBar() {
 					</Nav>
 
 					<Nav className="justify-content-end">
-						<Nav.Item>
+						{!user && <Nav.Item>
 							<Nav.Link as={Link} to="/login" className="mood-nav-btn mood-nav-login">
 								Login
 							</Nav.Link>
-						</Nav.Item>
-						<Nav.Item>
+						</Nav.Item>}
+						{!user && <Nav.Item>
 							<Nav.Link
 								as={Link}
 								to="/register"
@@ -58,7 +74,16 @@ function NavBar() {
 							>
 								Signup
 							</Nav.Link>
-						</Nav.Item>
+						</Nav.Item>}
+						{user && <Nav.Item onClick={handleLogout}>
+							<Nav.Link
+								as={Link}
+								to=""
+								className="mood-nav-btn mood-nav-logout"
+							>
+								Logout
+							</Nav.Link>
+						</Nav.Item>}
 					</Nav>
 				</Navbar.Collapse>
 			</div>
