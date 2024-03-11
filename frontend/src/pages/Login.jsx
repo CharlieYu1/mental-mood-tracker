@@ -28,12 +28,12 @@ function Login() {
 		// TODO
 		e.preventDefault()
 		try {
-			const response = userService.login({
+			const response = await userService.login({
 				username,
 				password
 			})
+			console.log(response)
 			setToken(response.token)
-			setUser(response.user)
 			localStorage.setItem('token', response.token)
 			navigate("/dashboard")
 		} catch (error) {

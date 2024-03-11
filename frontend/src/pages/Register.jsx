@@ -32,8 +32,6 @@ function Register() {
 				password,
 				verifyPassword
 			})
-
-			console.log(response)
 			setToken(response.token)
 			setUser(response.user)
 			localStorage.setItem('token', response.token)
