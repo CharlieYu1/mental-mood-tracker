@@ -1,16 +1,18 @@
 /* memberPage.css */
 
-/* Sidebar style */
-.sidebar {
+/* Dashboard style */
+.row .aside {
 	padding: 2rem 0;
-	background-color: var(--sidebar-bg-color);
-	color: var(--sidebar-text-color);
-}
-
-.aside {
 	max-width: 280px !important;
   background-color: var(--sidebar-bg-color);
   color: var(--sidebar-text-color);
+	z-index: 20;
+}
+
+/* Sidebar style */
+.sidebar {
+	background-color: var(--sidebar-bg-color);
+	color: var(--sidebar-text-color);
 }
 
 /* User box style */
@@ -26,22 +28,26 @@
 	align-self: center;
 }
 
+.sidebar-username {
+	font-size: 1.3rem;
+	font-weight: 900 !important;
+}
+
 /* Sidebar button style */
 .sidebar-item {
 	display: flex;
 	margin-bottom: 3px;
-	padding: 0 1rem;
+	padding: 0 2rem;
 	width: 100%;
 	background-color: var(--sidebar-btn-color);
 	color: var(--sidebar-text-color);
-	border-right: 10px solid;
 	border-color: var(--sidebar-border-color);
 }
 
 .sidebar-item:hover {
-	background-color: var(--sidebar-active-btn-color);
-	color: var(--sidebar-active-text-color);
-	border-color: var(--sidebar-active-border-color);
+	background-color: var(--sidebar-active-btn-color) !important;
+	color: var(--sidebar-active-text-color)!important;
+	border-color: var(--sidebar-active-border-color)!important;
 }
 
 .sidebar-item a {
@@ -75,11 +81,7 @@
   /* z-index: 10; */
 }
 
-/* .toggle-button.active {
-  display: none;
-} */
-
-/* Content style */
+Content style
 .content {
   margin-left: 280px;
 }
