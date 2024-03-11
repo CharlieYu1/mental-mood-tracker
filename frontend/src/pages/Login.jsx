@@ -32,8 +32,8 @@ function Login() {
 				username,
 				password
 			})
-			console.log(response)
 			setToken(response.token)
+			setUser(response.user)
 			localStorage.setItem('token', response.token)
 			navigate("/dashboard")
 		} catch (error) {
