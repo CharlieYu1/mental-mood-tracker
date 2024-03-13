@@ -35,7 +35,7 @@ function Login() {
 			setToken(response.token)
 			setUser(response.user)
 			localStorage.setItem('token', response.token)
-			navigate("/dashboard")
+			navigate("/dashboard/mood")
 		} catch (error) {
 			console.error("Login failed:", error.response.data.message)
 			setToken(null)

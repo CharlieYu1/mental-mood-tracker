@@ -1,42 +1,33 @@
 //Dashboard page
 import React, { useState, useContext } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "../components/styles/memberPage.css";
-import Sidebar from "../components/sideBar";
+import Sidebar from "../components/SideBar";
+import Mood from "../components/Mood";
+import Journal from "../components/Journal";
+import Logs from "../components/Logs";
 import { Row, Col } from "react-bootstrap";
 import { AuthContext } from "../components/AuthContext";
 
 function Dashboard() {
-  const { user, loading } = useContext(AuthContext);
-  const [showSidebar, setShowSidebar] = useState(true);
-  
-  if (loading) {
-    return <div>Loading...</div>
-  }
+	const { user, loading } = useContext(AuthContext);
 
-  const toggleSidebar = () => {
-    setShowSidebar(!showSidebar);
-  };  
+	if (loading) {
+		return <div>Loading...</div>;
+	}
 
-  return (
-    <div>
-      <Row>
-        {showSidebar && (
-          <Col className="aside">            
-            <Sidebar />
-            {/* <button className={`toggle-button${showSidebar ? " active" : ""}`} onClick={toggleSidebar}>
-        <FontAwesomeIcon icon={faBars} />
-      </button> */}
-          </Col>
-        )}
-        <Col className={`content${showSidebar ? " sidebar-open" : ""}`}>
-          {/* Dashboard Content */}
-          <p>Dashboard Content Goes Here</p>
-          {user ? <p>Welcome {user.username}!</p> : <p>Login to use the dashboard.</p>}
-        </Col>
-      </Row>
+	return (
+		<div>
 
-    </div>
-  );
+			{/* Dashboard Content */}
+
+			<Routes>
+				<Route path="/mood" element={<Mood />} />
+				<Route path="/journal" element={<Journal />} />
+				<Route path="/logs" element={<Logs />} />
+			</Routes>
+		</div>
+	);
 }
 
 export default Dashboard;

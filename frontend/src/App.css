@@ -1,9 +1,10 @@
 /* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet');
+
 #root {
   margin: 0;
   padding: 0;
-
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
 }
 
 :root {
@@ -47,9 +48,39 @@
 body {
   background-color: var(--bg-color-primary) !important;
   color: var(--text-color-dark) !important;
-  min-height: 100vh;
 }
 
 h1,h2,h3,h4,h5,h6,label,span {
+  font-family: 'Quicksand', sans-serif;
   font-weight: 600 !important;
 }
+
+.main-content {
+  min-height: calc(100vh - 4.5rem);
+}
+
+/* Nav and sidebar style */
+Nav,
+.sidebar {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+}
+
+.row .aside {
+	padding: 2rem 0;
+	max-width: 280px !important;
+  min-height: calc(100vh - 6.5rem);
+  z-index: 20;
+}
+
+/* Footer style */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 1rem;
+}
+
+
+
+

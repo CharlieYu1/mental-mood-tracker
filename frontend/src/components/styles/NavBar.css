@@ -1,6 +1,7 @@
 /* NavBar.css */
 .mood-nav {
 	background-color: var(--navbar-bg-color);
+	height: 3.5rem;
 	z-index: 10;
 }
 

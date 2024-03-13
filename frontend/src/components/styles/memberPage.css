@@ -2,11 +2,8 @@
 
 /* Dashboard style */
 .row .aside {
-	padding: 2rem 0;
-	max-width: 280px !important;
   background-color: var(--sidebar-bg-color);
-  color: var(--sidebar-text-color);
-	z-index: 20;
+  color: var(--sidebar-text-color);	
 }
 
 /* Sidebar style */
@@ -29,6 +26,7 @@
 }
 
 .sidebar-username {
+	margin: 0.5rem 0 2rem 0;
 	font-size: 1.3rem;
 	font-weight: 900 !important;
 }
@@ -37,17 +35,10 @@
 .sidebar-item {
 	display: flex;
 	margin-bottom: 3px;
-	padding: 0 2rem;
 	width: 100%;
 	background-color: var(--sidebar-btn-color);
 	color: var(--sidebar-text-color);
 	border-color: var(--sidebar-border-color);
-}
-
-.sidebar-item:hover {
-	background-color: var(--sidebar-active-btn-color) !important;
-	color: var(--sidebar-active-text-color)!important;
-	border-color: var(--sidebar-active-border-color)!important;
 }
 
 .sidebar-item a {
@@ -55,6 +46,7 @@
 	display: flex;
 	align-items: center;
 	text-decoration: none;
+	padding: 1rem 1.8rem;
 }
 
 .sidebar-item a svg {
@@ -63,25 +55,17 @@
 	height: 1.2rem;
 }
 
-.sidebar-item:hover a {
-	color: var(--sidebar-active-text-color);
+.sidebar-item a:hover,
+.sidebar-item a:focus,
+.sidebar-item a:active,
+.sidebar-item a.active {
+	background-color: var(--sidebar-active-btn-color) !important;
+	color: var(--sidebar-active-text-color)!important;
 }
 
-/* Toggle button style */
-.toggle-button {
-  position: fixed;
-  top: 50%;
-  right: 200;
-  background-color: var(--sidebar-bg-color);
-  color: var(--sidebar-text-color);
-  border: none;
-  padding: 0.5rem;
-  font-size: 1.5rem;
-  cursor: pointer;
-  /* z-index: 10; */
-}
 
-Content style
+
+/* Content style */
 .content {
   margin-left: 280px;
 }
