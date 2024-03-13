@@ -35,7 +35,7 @@ function Register() {
 			setToken(response.token)
 			setUser(response.user)
 			localStorage.setItem('token', response.token)
-			navigate("/dashboard");
+			navigate("/dashboard/mood");
 		} catch (error) {
 			console.error("Registration failed:", error.response.data.message)
 			setToken(null)

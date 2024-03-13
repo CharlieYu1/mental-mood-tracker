@@ -55,17 +55,17 @@ function NavBar() {
 							id="nav-dropdown"
 							className="mood-nav-link"
 						>
-							<NavDropdown.Item as={Link} to="/mood" className="mood-nav-dropdown">
+							<NavDropdown.Item as={Link} to="/dashboard/mood" className="mood-nav-dropdown">
 								Mood / Activities
 							</NavDropdown.Item>
-							<NavDropdown.Item as={Link} to="/journal" className="mood-nav-dropdown">
+							<NavDropdown.Item as={Link} to="/dashboard/journal" className="mood-nav-dropdown">
 								Journal
 							</NavDropdown.Item>
-							<NavDropdown.Item as={Link} to="/logs" className="mood-nav-dropdown">
+							<NavDropdown.Item as={Link} to="/dashboard/logs" className="mood-nav-dropdown">
 								Logs
 							</NavDropdown.Item>
 							<NavDropdown.Divider />
-							<NavDropdown.Item as={Link} to="/setting" className="mood-nav-dropdown">
+							<NavDropdown.Item as={Link} to="/dashboard/setting" className="mood-nav-dropdown">
 								Setting
 							</NavDropdown.Item>
 						</NavDropdown>
