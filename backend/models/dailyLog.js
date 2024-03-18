@@ -2,9 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const dailyLogSchema = new Schema({
-    time: { type: Date, default: new Date().setHours(0, 0, 0, 0) },
+    date: { type: Date, default: new Date().setHours(0, 0, 0, 0) },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
     
-    mood: { type: Number, min: 1, max: 10 },
+    mood: { type: Number, min: 0, max: 10 },
     moodRemarks: { type: String },
 
     timeToBed: { type: Date },
@@ -24,4 +25,6 @@ const dailyLogSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model('MoodLog', dailyLogSchema);
+dailyLogSchema.index({ date: 1, user: 1 }, { unique: true })
+
+module.exports = mongoose.model('DailyLog', dailyLogSchema);
