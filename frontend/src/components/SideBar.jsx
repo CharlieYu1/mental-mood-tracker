@@ -10,7 +10,7 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "./AuthContext";
-import { Button, NavItem, Offcanvas } from "react-bootstrap";
+import { NavItem, Offcanvas } from "react-bootstrap";
 
 function Sidebar() {
   const { user } = useContext(AuthContext);
