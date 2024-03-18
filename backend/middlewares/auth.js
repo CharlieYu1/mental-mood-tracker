@@ -7,9 +7,9 @@ const auth = (req, res, next) => {
 
     // check token exists
     if (!token) {
-        return res.status(403).json(
+        return res.status(403).json({
             message: "Authorization denied, please login"
-        )
+        })
     }
 
     
@@ -23,7 +23,7 @@ const auth = (req, res, next) => {
         next()
 
     } catch (e) {
-        res.status(400).({ message: "Please log in" })
+        res.status(400).json({ message: "Please log in" })
     }
 }
 
@@ -31,7 +31,7 @@ const adminAuth = (req, res, next) => {
     const { isAdmin } = req.user
 
     if (!isAdmin) {
-        res.status(401).({ message: "Authorization denied, only Admins"})
+        res.status(401).json({ message: "Authorization denied, only Admins"})
     } else next();
 }
 
