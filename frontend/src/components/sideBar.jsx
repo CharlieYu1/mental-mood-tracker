@@ -22,7 +22,7 @@ function Sidebar() {
 		<div className="sidebar">
 			<div className="sidebar-user">
 				<Image
-					src="https://img.freepik.com/premium-photo/cute-teddy-cute-teddy-bear-isolated-white-background_176100-305.jpg?w=500"
+					src="../assets/images/user-photo.jpg"
 					roundedCircle
 					className="sidebar-img"
 				/>
