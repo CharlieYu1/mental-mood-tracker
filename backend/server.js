@@ -5,8 +5,10 @@ require('dotenv').config()
 const cors = require('cors')
 
 const User = require('./models/UsersModel')
+const DailyLog = require('./models/dailyLog')
 
 const usersRouter = require('./routes/api/users')
+const dailyLogsRouter = require('./routes/api/dailyLogs')
 
 const app = express()
 
@@ -19,6 +21,7 @@ app.use(cors())
 app.use(logger("dev"))
 
 app.use('/api/users', usersRouter)
+app.use('/api/dailylogs', dailyLogsRouter)
 
 if (process.env.NODE_ENV === 'test') {
     const testingRouter = require('./controllers/testing')
