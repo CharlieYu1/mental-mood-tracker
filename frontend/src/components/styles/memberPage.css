@@ -1,6 +1,10 @@
 /* memberPage.css */
 
 /* Dashboard style */
+.dashboard-content {
+  width: 100vw;
+}
+
 .row .aside {
   background-color: var(--sidebar-bg-color);
   color: var(--sidebar-text-color);	

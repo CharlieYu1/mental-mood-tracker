@@ -60,6 +60,7 @@
 		background-color: var(--navbar-bg-color);
 		transition: left 0.3s ease 0s;
 		overflow: auto;
+		z-index: 10;
 	}
 
 	.mood-nav {
