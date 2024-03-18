@@ -21,7 +21,10 @@
 
 .sidebar-img {
 	margin-bottom: 1rem;
+	object-fit: cover;
+	object-position: 25% 25%;
 	width: 180px;
+	height: 180px;
 	align-self: center;
 }
 
@@ -63,13 +66,12 @@
 	color: var(--sidebar-active-text-color)!important;
 }
 
-
-
 /* Content style */
 .content {
-  margin-left: 280px;
+  padding: 2rem 3rem;
 }
 
-.content.sidebar-open {
-  transition: margin-left 0.3s ease;
+/* Mood page style */
+.mood-title-icon {
+	margin: 0 1rem;
 }
