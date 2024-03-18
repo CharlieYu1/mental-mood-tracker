@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const dailyLogSchema = new Schema({
     date: { type: Date, default: new Date().setHours(0, 0, 0, 0) },
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     
     mood: { type: Number, min: 0, max: 10 },
     moodRemarks: { type: String },
@@ -15,7 +15,7 @@ const dailyLogSchema = new Schema({
     sleepQuality: { 
         type: String, 
         enum: ['Very Poor', 'Poor', 'Fair', 'Good', 'Very Good']
-    }
+    },
 
     sleepRemarks: { type: String },
 
