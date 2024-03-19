@@ -3,20 +3,29 @@ const DailyLog = require('../models/dailyLog')
 
 exports.saveMoodLog = async (req, res, next) => {
     const userId = req.user.id;
-    const date = req.body.date;
+    const date = req.body.date || new Date().setHours(0, 0, 0, 0);
 
-    await DailyLog.findOneAndUpdate({ date: date, user: userId }).then((dailyLog, err) => {
+
+    await DailyLog.findOne({ date: date, user: userId }).then((dailyLog, err) => {
         if (err) {
             res.status(400).json({
                 message: "Error fetching mood log from database"
             })
             return ;
         }
-        dailyLog = {
-            ...dailyLog,
-            mood: req.body.mood,
-            moodRemarks: req.body.moodRemarks
+        
+        if (!dailyLog) {
+            dailyLog = new DailyLog({
+                date: date,
+                user: userId,
+                mood: req.body.mood,
+                moodRemarks: req.body.moodRemarks
+            })
+        } else {
+            dailyLog.mood = req.body.mood,
+            dailyLog.moodRemarks = req.body.moodRemarks
         }
+               
 
         dailyLog.save().then(dailyLog => {
             res.json({

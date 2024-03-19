@@ -3,10 +3,16 @@ const jwt = require('jsonwebtoken')
 const secret = process.env.SECRET
 
 const auth = (req, res, next) => {
-    const token = req.header("x-auth-token")
+    const authorization = req.get('authorization')
+
+    if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
+        req.token = authorization.substring(7)
+      } else {
+        req.token = null
+      }
 
     // check token exists
-    if (!token) {
+    if (!req.token) {
         return res.status(403).json({
             message: "Authorization denied, please login"
         })
@@ -15,7 +21,7 @@ const auth = (req, res, next) => {
     
     try {
         // verify token
-        const decodedUser = jwt.verify(token, secret)
+        const decodedUser = jwt.verify(req.token, secret)
 
         // add user from token payload
         req.user = decodedUser
@@ -23,6 +29,7 @@ const auth = (req, res, next) => {
         next()
 
     } catch (e) {
+        console.log(e)
         res.status(400).json({ message: "Please log in" })
     }
 }
