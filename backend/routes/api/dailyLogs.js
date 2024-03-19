@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const auth = require('./../../middlewares/auth')
+const { auth } = require('./../../middlewares/auth')
+const dailyLogController = require('./../../controllers/dailyLogController')
 // TODO: maybe add validation for log updates
 
-// router.post('/mood', auth, dailyLogController.saveMoodLog)
+router.post('/mood', auth, dailyLogController.saveMoodLog)
 
 // router.post('/sleep', auth, dailyLogController.saveSleepLog)
 
