@@ -5,11 +5,11 @@ const dailyLogSchema = new Schema({
     date: { type: Date, default: new Date().setHours(0, 0, 0, 0) },
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     
-    mood: { type: Number, min: 0, max: 10 },
+    mood: { type: Number, min: 1, max: 10 },
     moodRemarks: { type: String },
 
     timeToBed: { type: Date },
-    timeWokeUp: { type: Date },
+    timeWakeUp: { type: Date },
     sleepDuration: { type: Number },
 
     sleepQuality: { 
