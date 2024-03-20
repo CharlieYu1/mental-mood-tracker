@@ -1,0 +1,34 @@
+/* MoodPageChart.css */
+
+
+
+.containerStyle{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.gridline {
+  stroke: var(--grey);
+}
+
+.axis {
+  line {
+    stroke: var(--grey);
+  }
+  ticks {
+    stroke: var(--grey);
+  }
+  text {
+    stroke: none;
+    fill: var(--text-color-dark);
+    font-weight: 600;
+  }
+}
+
+.month-mood-chart {
+  stroke: var(--turquoise) !important;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  fill: none;
+}

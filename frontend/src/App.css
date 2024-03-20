@@ -29,7 +29,7 @@
   --grey: #D4D4D4;
   --charcoal: #525252;
   --orange: #FFD15D;
-  --lightorange: #FEE080;
+  --lightorange: #fee080;
   --lilac: #9D9DF0;
   --coral: #FF8891;
   --turquoise: #6AD6BE;
@@ -71,6 +71,39 @@ Nav,
 	max-width: 280px !important;
   min-height: calc(100vh - 6.5rem);
   z-index: 20;
+}
+
+/* Sidebar offcanvas styles */
+/* Large screen */
+@media (min-width: 992px) {
+	.offcanvas-btn {
+		display: none !important;
+		position: fixed;
+		top: 3.5rem;
+		left: 0;
+	}
+}
+
+/* Small screen */
+@media (max-width: 991px) {
+	.aside {
+		display: none;
+	}
+
+  .offcanvas-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 3.5rem;
+    left: 0;  
+    width: 3rem !important;
+    height: 3rem;
+    text-align: center;
+    background-color: var(--lightorange);
+    color: var(--charcoal);
+  }
+
 }
 
 /* Footer style */

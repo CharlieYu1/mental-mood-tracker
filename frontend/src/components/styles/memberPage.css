@@ -83,7 +83,51 @@
 	padding: 2rem 3rem;
 }
 
-/* Mood page style */
-.mood-title-icon {
-	margin: 0 1rem;
+/* Page style */
+.dashboard-card-title h5{
+	margin-bottom: 0;
+	text-align: center;
+	color: var(--text-color-white);
+}
+
+.dashboard-date-arrow {
+	margin: 0 2rem;
+	cursor: pointer;
+}
+
+.card {
+	border: 0;
+}
+
+.card-header {
+	border: 0 !important;
+	padding: 1rem 0 !important;
+}
+
+.card-body {
+	display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mood-chart-header {
+	background-color: var(--turquoise) !important;
+}
+
+.mood-count-header {
+	background-color: var(--coral) !important;
+}
+
+.sleeping-hrs-header {
+	background-color: var(--lilac) !important;
+}
+
+.activities-count-header {
+	background-color: var(--cerulean) !important;
+}
+
+.mood-row {
+	min-height: 300px;
+	width: 100%;
+	margin: auto !important;
 }
