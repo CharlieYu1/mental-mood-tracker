@@ -50,7 +50,7 @@ body {
   color: var(--text-color-dark) !important;
 }
 
-h1,h2,h3,h4,h5,h6,label,span {
+h1,h2,h3,h4,h5,h6,label,span, .card-title {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600 !important;
 }
