@@ -116,4 +116,12 @@ Nav,
 
 
 
-
+/* Sleep log */
+root: {
+	"& .MuiOutlinedInput-notchedOutline": {
+		borderColor: "blue"
+	},
+	"&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+		borderColor: "red"
+	}
+}

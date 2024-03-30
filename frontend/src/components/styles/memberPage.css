@@ -166,8 +166,21 @@
 	font-size: 1.5rem;	
 }
 
+/* Rate mood */
 .icon-img {
 	margin: 5px;
 	width: 40px;
 	height: 40px;	
 }
+
+/* textarea:focus {   
+  border: 2 var(--yellow) ;
+  box-shadow: 0 0 8px var(--yellow)!important;
+  outline: 0.2rem solid var(--lightorange) !important;
+} */
+
+.timepicker {
+	display: flex !important;
+  justify-content: space-between !important;
+}
+
