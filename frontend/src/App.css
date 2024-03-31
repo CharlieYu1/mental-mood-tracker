@@ -29,7 +29,7 @@
   --grey: #D4D4D4;
   --charcoal: #525252;
   --orange: #FFD15D;
-  --lightorange: #FEE080;
+  --lightorange: #fee080;
   --lilac: #9D9DF0;
   --coral: #FF8891;
   --turquoise: #6AD6BE;
@@ -50,7 +50,7 @@ body {
   color: var(--text-color-dark) !important;
 }
 
-h1,h2,h3,h4,h5,h6,label,span {
+h1,h2,h3,h4,h5,h6,label,span, .card-title {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600 !important;
 }
@@ -73,6 +73,39 @@ Nav,
   z-index: 20;
 }
 
+/* Sidebar offcanvas styles */
+/* Large screen */
+@media (min-width: 992px) {
+	.offcanvas-btn {
+		display: none !important;
+		position: fixed;
+		top: 3.5rem;
+		left: 0;
+	}
+}
+
+/* Small screen */
+@media (max-width: 991px) {
+	.aside {
+		display: none;
+	}
+
+  .offcanvas-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 3.5rem;
+    left: 0;  
+    width: 3rem !important;
+    height: 3rem;
+    text-align: center;
+    background-color: var(--lightorange);
+    color: var(--charcoal);
+  }
+
+}
+
 /* Footer style */
 .footer {
   position: fixed;
@@ -83,4 +116,12 @@ Nav,
 
 
 
-
+/* Sleep log */
+root: {
+	"& .MuiOutlinedInput-notchedOutline": {
+		borderColor: "blue"
+	},
+	"&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+		borderColor: "red"
+	}
+}

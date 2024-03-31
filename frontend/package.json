@@ -11,18 +11,27 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
     "@fortawesome/fontawesome-free": "^6.5.1",
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
     "@fortawesome/free-regular-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@mui/lab": "^5.0.0-alpha.169",
+    "@mui/material": "^5.15.14",
+    "@mui/styles": "^5.15.14",
+    "@mui/x-date-pickers": "^7.1.0",
     "axios": "^1.6.7",
     "bootstrap": "^5.3.3",
     "dayjs": "^1.11.10",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.2",
+    "react-vis": "^1.12.1",
     "tailwindcss": "^3.4.1"
   },
   "devDependencies": {

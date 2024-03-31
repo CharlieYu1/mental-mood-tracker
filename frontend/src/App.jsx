@@ -1,10 +1,13 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col} from "react-bootstrap";
 import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
 import Sidebar from "./components/SideBar";
-import { AuthProvider, AuthContext } from "./components/AuthContext";
+import Footer from "./components/Footer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRightArrowLeft } from "@fortawesome/free-solid-svg-icons";
+
+import { AuthContext } from "./components/AuthContext";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -18,22 +21,35 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
 	const { user, loading } = useContext(AuthContext);
+	const [showSidebar, setShowSidebar] = useState(false);
 
 	if (loading) {
 		return <div>Loading...</div>;
 	}
 
+	const handleToggleSidebar = () => {
+		setShowSidebar(!showSidebar);
+	};
+
 	return (
 		<BrowserRouter>
 			<div className="main-content">
-				<Row>
+				<Row className="gx-0">
 					<NavBar />
 					{user && (
+					<div
+						onClick={handleToggleSidebar}
+						className="offcanvas-btn"
+					>
+					<FontAwesomeIcon icon={faArrowRightArrowLeft} />
+					</div>
+					)}
+					{user && (
 						<Col className="aside">
-							<Sidebar />
+							<Sidebar show={showSidebar} setShow={setShowSidebar} />
 						</Col>
 					)}
-					<Col>
+					<Col className="dashboard-content">
 						<Routes>
 							<Route path="/" element={<Home />} />
 							<Route path="/about" element={<About />} />
@@ -43,10 +59,10 @@ function App() {
 							<Route path="/register" element={<Register />} />
 							<Route path="/resources" element={<Resources />} />
 						</Routes>
-					</Col>          
+					</Col>
 				</Row>
-			</div><Footer className="footer"/>
-			
+			</div>
+			<Footer className="footer" />
 		</BrowserRouter>
 	);
 }

@@ -83,7 +83,208 @@
 	padding: 2rem 3rem;
 }
 
-/* Mood page style */
-.mood-title-icon {
+/* Page style */
+.dashboard-card-title{
+	margin-bottom: 0;
+	text-align: center;
+} 
+
+.dashboard-date-arrow {
 	margin: 0 1rem;
+	cursor: pointer;
+}
+
+.card {
+	border: 0;
+}
+
+.card-header,
+.card-title {
+	border: 0 !important;
+}
+
+.card-body {
+	display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-date {
+	text-align: center;
+}
+
+/* Mood page style */
+.dashboard-card-title h5{
+	color: var(--text-color-white);
+}
+
+.mood-chart-header {
+	background-color: var(--turquoise) !important;
+	padding: 1rem 0 !important;
+}
+
+.mood-count-header {
+	background-color: var(--coral) !important;
+}
+
+.sleeping-hrs-header {
+	background-color: var(--lilac) !important;
+}
+
+.activities-count-header {
+	background-color: var(--cerulean) !important;
+}
+
+.mood-row {
+	min-height: 300px;
+	width: 100%;
+	margin: auto !important;
+}
+
+/* Logs page style */
+.save-btn {
+	max-width: 100px !important;
+	background-color: var(--ruby) !important;
+	border: 0 !important;
+}
+
+
+.log-title {
+	color: var(--azure) !important;
+}
+
+.log-btn {
+	width: 100%;	
+}
+
+.log-btn .btn {
+  margin: 5px;
+	padding: 0;
+	width: 40px;
+	height: 40px;
+	border: 0;
+	font-size: 1.5rem;	
+}
+
+/* Rate mood */
+.icon-img {
+	margin: 5px;
+	width: 40px;
+	height: 40px;	
+}
+
+/* textarea:focus {   
+  border: 2 var(--yellow) ;
+  box-shadow: 0 0 8px var(--yellow)!important;
+  outline: 0.2rem solid var(--lightorange) !important;
+} */
+
+/* Sleep log */
+.timepicker {
+	display: flex !important;
+  justify-content: space-between !important;
+}
+
+.sleep-btn {
+	width: 100% !important;
+}
+
+.sleep-btn .btn {
+  margin: 5px;
+	padding: 0;
+	width: 120px;
+	height: 40px;
+	border: 0;	
+}
+
+.quality-btn-1 {
+	background-color: var(--azure) !important;
+}
+.quality-btn-2 {
+	background-color: var(--turquoise) !important;
+}
+.quality-btn-3 {
+	background-color: var(--orange) !important;
+}
+.quality-btn-4 {
+	background-color: var(--pink) !important;
+}
+.quality-btn-5 {
+	background-color: var(--coral) !important;
+}
+
+/* Small screen */
+@media (max-width: 576px) {
+	.sleep-btn .btn {
+		width: 100px;
+	} 
+}
+
+/* Activities log */
+.act-btn .btn {
+  margin: 5px;
+	padding: 0;
+	width: 100px;
+	height: 100px;
+	border: 0;	
+}
+
+.act-btn-icon {
+	font-size: 3.5rem;
+}
+
+.act-btn .card-text {
+	margin-bottom: 0.5rem !important;
+}
+
+@media (min-width: 577px) and (max-width: 767px) {
+	.act-btn .btn {
+		width: 80px;
+		height: 80px;
+	}
+	.act-btn-icon {
+		font-size: 3rem;
+	}
+}
+
+@media (max-width: 576px) {
+	.act-btn .btn {
+		width: 65px;
+		height: 65px;
+	}
+	.act-btn-icon {
+		font-size: 2.2rem;
+	}
+}
+
+.act-btn-social{
+	background-color: var(--azure) !important;
+}
+
+:hover.act-btn-social {
+	background-color: var(--cerulean) !important;
+}
+
+.act-btn-hobbies{
+	background-color: var(--lime) !important;
+}
+
+:hover.act-btn-hobbies {
+	background-color: var(--chartreuse) !important;
+}
+
+.act-btn-exercise{
+	background-color: var(--orange) !important;
+}
+
+:hover.act-btn-exercise {
+	background-color: var(--lightorange) !important;
+}
+
+.act-btn-meal{
+	background-color: var(--pink) !important;
+}
+
+:hover.act-btn-meal {
+	background-color: var(--pastel) !important;
 }
