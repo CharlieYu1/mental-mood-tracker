@@ -21,7 +21,7 @@
 }
 
 .offcanvas-body {
-	padding: 1rem 0 !important; 
+	padding: 1rem 0 !important;
 }
 
 /* User box style */
@@ -84,10 +84,10 @@
 }
 
 /* Page style */
-.dashboard-card-title{
+.dashboard-card-title {
 	margin-bottom: 0;
 	text-align: center;
-} 
+}
 
 .dashboard-date-arrow {
 	margin: 0 1rem;
@@ -105,8 +105,8 @@
 
 .card-body {
 	display: flex;
-  justify-content: center;
-  align-items: center;
+	justify-content: center;
+	align-items: center;
 }
 
 .dashboard-date {
@@ -114,7 +114,7 @@
 }
 
 /* Mood page style */
-.dashboard-card-title h5{
+.dashboard-card-title h5 {
 	color: var(--text-color-white);
 }
 
@@ -148,29 +148,28 @@
 	border: 0 !important;
 }
 
-
 .log-title {
 	color: var(--azure) !important;
 }
 
 .log-btn {
-	width: 100%;	
+	width: 100%;
 }
 
 .log-btn .btn {
-  margin: 5px;
+	margin: 5px;
 	padding: 0;
 	width: 40px;
 	height: 40px;
 	border: 0;
-	font-size: 1.5rem;	
+	font-size: 1.5rem;
 }
 
 /* Rate mood */
 .icon-img {
 	margin: 5px;
 	width: 40px;
-	height: 40px;	
+	height: 40px;
 }
 
 /* textarea:focus {   
@@ -182,7 +181,7 @@
 /* Sleep log */
 .timepicker {
 	display: flex !important;
-  justify-content: space-between !important;
+	justify-content: space-between !important;
 }
 
 .sleep-btn {
@@ -190,11 +189,11 @@
 }
 
 .sleep-btn .btn {
-  margin: 5px;
+	margin: 5px;
 	padding: 0;
 	width: 120px;
 	height: 40px;
-	border: 0;	
+	border: 0;
 }
 
 .quality-btn-1 {
@@ -217,16 +216,16 @@
 @media (max-width: 576px) {
 	.sleep-btn .btn {
 		width: 100px;
-	} 
+	}
 }
 
 /* Activities log */
 .act-btn .btn {
-  margin: 5px;
+	margin: 5px;
 	padding: 0;
 	width: 100px;
 	height: 100px;
-	border: 0;	
+	border: 0;
 }
 
 .act-btn-icon {
@@ -257,7 +256,7 @@
 	}
 }
 
-.act-btn-social{
+.act-btn-social {
 	background-color: var(--azure) !important;
 }
 
@@ -265,7 +264,7 @@
 	background-color: var(--cerulean) !important;
 }
 
-.act-btn-hobbies{
+.act-btn-hobbies {
 	background-color: var(--lime) !important;
 }
 
@@ -273,7 +272,7 @@
 	background-color: var(--chartreuse) !important;
 }
 
-.act-btn-exercise{
+.act-btn-exercise {
 	background-color: var(--orange) !important;
 }
 
@@ -281,7 +280,7 @@
 	background-color: var(--lightorange) !important;
 }
 
-.act-btn-meal{
+.act-btn-meal {
 	background-color: var(--pink) !important;
 }
 
