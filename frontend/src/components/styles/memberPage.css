@@ -179,8 +179,112 @@
   outline: 0.2rem solid var(--lightorange) !important;
 } */
 
+/* Sleep log */
 .timepicker {
 	display: flex !important;
   justify-content: space-between !important;
 }
 
+.sleep-btn {
+	width: 100% !important;
+}
+
+.sleep-btn .btn {
+  margin: 5px;
+	padding: 0;
+	width: 120px;
+	height: 40px;
+	border: 0;	
+}
+
+.quality-btn-1 {
+	background-color: var(--azure) !important;
+}
+.quality-btn-2 {
+	background-color: var(--turquoise) !important;
+}
+.quality-btn-3 {
+	background-color: var(--orange) !important;
+}
+.quality-btn-4 {
+	background-color: var(--pink) !important;
+}
+.quality-btn-5 {
+	background-color: var(--coral) !important;
+}
+
+/* Small screen */
+@media (max-width: 576px) {
+	.sleep-btn .btn {
+		width: 100px;
+	} 
+}
+
+/* Activities log */
+.act-btn .btn {
+  margin: 5px;
+	padding: 0;
+	width: 100px;
+	height: 100px;
+	border: 0;	
+}
+
+.act-btn-icon {
+	font-size: 3.5rem;
+}
+
+.act-btn .card-text {
+	margin-bottom: 0.5rem !important;
+}
+
+@media (min-width: 577px) and (max-width: 767px) {
+	.act-btn .btn {
+		width: 80px;
+		height: 80px;
+	}
+	.act-btn-icon {
+		font-size: 3rem;
+	}
+}
+
+@media (max-width: 576px) {
+	.act-btn .btn {
+		width: 65px;
+		height: 65px;
+	}
+	.act-btn-icon {
+		font-size: 2.2rem;
+	}
+}
+
+.act-btn-social{
+	background-color: var(--azure) !important;
+}
+
+:hover.act-btn-social {
+	background-color: var(--cerulean) !important;
+}
+
+.act-btn-hobbies{
+	background-color: var(--lime) !important;
+}
+
+:hover.act-btn-hobbies {
+	background-color: var(--chartreuse) !important;
+}
+
+.act-btn-exercise{
+	background-color: var(--orange) !important;
+}
+
+:hover.act-btn-exercise {
+	background-color: var(--lightorange) !important;
+}
+
+.act-btn-meal{
+	background-color: var(--pink) !important;
+}
+
+:hover.act-btn-meal {
+	background-color: var(--pastel) !important;
+}
