@@ -48,6 +48,14 @@ function Logs() {
 	// Initialize state for the current date
 	const [currentDate, setCurrentDate] = useState(dayjs());
 
+	// Initialize state for mood
+	const [mood, setMood] = useState(null);
+
+	const handleMoodChange = (mood) => {
+		setMood(mood);
+		// console.log(mood)
+	}
+
 	// Navigate to the previous month
 	const goToPreviousMonth = () => {
 		setCurrentDate(currentDate.subtract(1, "month"));
@@ -106,7 +114,7 @@ function Logs() {
 						<div className="d-flex flex-wrap log-btn">
 							<img src={icon1} className="icon-img" alt="Image 1" />
 							{[...Array(10)].map((_, index) => (
-								<Button key={index} style={{ backgroundColor: getColor(index) }}>
+								<Button key={index} style={{ backgroundColor: getColor(index) }} onClick={() => handleMoodChange(index + 1)}>
 									{index + 1}
 								</Button>
 							))}
