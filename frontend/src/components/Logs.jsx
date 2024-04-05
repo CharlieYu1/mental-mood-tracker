@@ -48,12 +48,19 @@ function Logs() {
 	// Initialize state for the current date
 	const [currentDate, setCurrentDate] = useState(dayjs());
 
-	// Initialize state for mood
+	// Initialize state for log items
 	const [mood, setMood] = useState(null);
+	const [moodRemarks, setMoodRemarks] = useState("")
 
+	// handlers for log items
 	const handleMoodChange = (mood) => {
 		setMood(mood);
 		// console.log(mood)
+	}
+
+	const handleMoodRemarksChange = event => {
+		setMoodRemarks(event.target.value);
+		// console.log(moodRemarks)
 	}
 
 	// Navigate to the previous month
@@ -127,6 +134,7 @@ function Logs() {
 								as="textarea"
 								rows={3}
 								placeholder="What made you feel good or bad today? Add note... (Optional)"
+								onChange={handleMoodRemarksChange}
 							/>
 						</Form.Group>
 					</Card.Body>
