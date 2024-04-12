@@ -33,6 +33,7 @@
   --lilac: #9D9DF0;
   --coral: #FF8891;
   --turquoise: #6AD6BE;
+  --blue: #429bf4;
   --azure: #559BE0;
   --cerulean: #80CAFF;
   --lime: #9ADD65;
@@ -43,6 +44,7 @@
   --ruby: #FC5765;
   --taupe: #977E65;
   --sandstone: #E7D0A5;
+  --darkorange: #ff9c31;
 }
 
 body {
@@ -116,12 +118,3 @@ Nav,
 
 
 
-/* Sleep log */
-root: {
-	"& .MuiOutlinedInput-notchedOutline": {
-		borderColor: "blue"
-	},
-	"&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-		borderColor: "red"
-	}
-}

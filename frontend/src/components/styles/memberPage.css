@@ -21,7 +21,7 @@
 }
 
 .offcanvas-body {
-	padding: 1rem 0 !important; 
+	padding: 1rem 0 !important;
 }
 
 /* User box style */
@@ -84,10 +84,10 @@
 }
 
 /* Page style */
-.dashboard-card-title{
+.dashboard-card-title {
 	margin-bottom: 0;
 	text-align: center;
-} 
+}
 
 .dashboard-date-arrow {
 	margin: 0 1rem;
@@ -105,8 +105,8 @@
 
 .card-body {
 	display: flex;
-  justify-content: center;
-  align-items: center;
+	justify-content: center;
+	align-items: center;
 }
 
 .dashboard-date {
@@ -114,7 +114,7 @@
 }
 
 /* Mood page style */
-.dashboard-card-title h5{
+.dashboard-card-title h5 {
 	color: var(--text-color-white);
 }
 
@@ -148,41 +148,38 @@
 	border: 0 !important;
 }
 
-
 .log-title {
 	color: var(--azure) !important;
 }
 
 .log-btn {
-	width: 100%;	
+	width: 100%;
 }
 
 .log-btn .btn {
-  margin: 5px;
+	margin: 5px;
 	padding: 0;
 	width: 40px;
 	height: 40px;
 	border: 0;
-	font-size: 1.5rem;	
+	font-size: 1.5rem;
+}
+
+.log-btn .active,{
+	outline: 5px solid var(--yellow) !important;
 }
 
 /* Rate mood */
 .icon-img {
 	margin: 5px;
 	width: 40px;
-	height: 40px;	
+	height: 40px;
 }
-
-/* textarea:focus {   
-  border: 2 var(--yellow) ;
-  box-shadow: 0 0 8px var(--yellow)!important;
-  outline: 0.2rem solid var(--lightorange) !important;
-} */
 
 /* Sleep log */
 .timepicker {
 	display: flex !important;
-  justify-content: space-between !important;
+	justify-content: space-between !important;
 }
 
 .sleep-btn {
@@ -190,43 +187,83 @@
 }
 
 .sleep-btn .btn {
-  margin: 5px;
+	margin: 5px;
 	padding: 0;
 	width: 120px;
 	height: 40px;
-	border: 0;	
+	border: 0;
 }
 
 .quality-btn-1 {
 	background-color: var(--azure) !important;
 }
-.quality-btn-2 {
-	background-color: var(--turquoise) !important;
+:hover.quality-btn-1 {
+	background-color: var(--cerulean) !important;
 }
+:active.quality-btn-1,
+:focus.quality-btn-1 {
+	outline: 5px solid var(--blue) !important;
+}
+
+.quality-btn-2 {
+	background-color: var(--lime) !important;
+}
+:hover.quality-btn-2 {
+	background-color: var(--chartreuse) !important;
+}
+:active.quality-btn-2,
+:focus.quality-btn-2 {
+	outline: 5px solid var(--turquoise) !important;
+}
+
 .quality-btn-3 {
 	background-color: var(--orange) !important;
 }
+:hover.quality-btn-3 {
+	background-color: var(--lightorange) !important;
+}
+:active.quality-btn-3,
+:focus.quality-btn-3 {
+	outline: 5px solid var(--darkorange) !important;
+}
+
 .quality-btn-4 {
 	background-color: var(--pink) !important;
 }
+:hover.quality-btn-4 {
+	background-color: var(--pastel) !important;
+}
+
+:active.quality-btn-4,
+:focus.quality-btn-4 {
+	outline: 5px solid var(--coral) !important;
+}
+
 .quality-btn-5 {
 	background-color: var(--coral) !important;
+}
+:hover.quality-btn-5 {
+	background-color: var(--pink) !important;
+}
+:active.quality-btn-5,
+:focus.quality-btn-5 {
+	outline: 5px solid var(--coral) !important;
 }
 
 /* Small screen */
 @media (max-width: 576px) {
 	.sleep-btn .btn {
 		width: 100px;
-	} 
+	}
 }
 
 /* Activities log */
 .act-btn .btn {
-  margin: 5px;
+	margin: 5px;
 	padding: 0;
 	width: 100px;
 	height: 100px;
-	border: 0;	
+	border: 0;
 }
 
 .act-btn-icon {
@@ -257,7 +294,7 @@
 	}
 }
 
-.act-btn-social{
+.act-btn-social {
 	background-color: var(--azure) !important;
 }
 
@@ -265,7 +302,13 @@
 	background-color: var(--cerulean) !important;
 }
 
-.act-btn-hobbies{
+:active.act-btn-social,
+:focus.act-btn-social {
+	outline: 5px solid var(--blue) !important;
+}
+
+
+.act-btn-hobbies {
 	background-color: var(--lime) !important;
 }
 
@@ -273,7 +316,12 @@
 	background-color: var(--chartreuse) !important;
 }
 
-.act-btn-exercise{
+:active.act-btn-hobbies,
+:focus.act-btn-hobbies {
+	outline: 5px solid var(--turquoise) !important;
+}
+
+.act-btn-exercise {
 	background-color: var(--orange) !important;
 }
 
@@ -281,10 +329,20 @@
 	background-color: var(--lightorange) !important;
 }
 
-.act-btn-meal{
+:active.act-btn-exercise,
+:focus.act-btn-exercise {
+	outline: 5px solid var(--darkorange) !important;
+}
+
+.act-btn-meal {
 	background-color: var(--pink) !important;
 }
 
 :hover.act-btn-meal {
 	background-color: var(--pastel) !important;
+}
+
+:active.act-btn-meal,
+:focus.act-btn-meal {
+	outline: 5px solid var(--coral) !important;
 }

@@ -30,17 +30,6 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 
-// const useStyles = makeStyles({
-// 	root: {
-// 		"& .MuiOutlinedInput-notchedOutline": {
-// 			borderColor: "yellow",
-// 		},
-// 		"&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-// 			borderColor: "yellow",
-// 		},
-// 	},
-// });
-
 import icon1 from "/assets/images/mood-icon-01.png";
 import icon10 from "/assets/images/mood-icon-05.png";
 
