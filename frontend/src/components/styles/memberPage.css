@@ -165,18 +165,16 @@
 	font-size: 1.5rem;
 }
 
+.log-btn .active,{
+	outline: 5px solid var(--yellow) !important;
+}
+
 /* Rate mood */
 .icon-img {
 	margin: 5px;
 	width: 40px;
 	height: 40px;
 }
-
-/* textarea:focus {   
-  border: 2 var(--yellow) ;
-  box-shadow: 0 0 8px var(--yellow)!important;
-  outline: 0.2rem solid var(--lightorange) !important;
-} */
 
 /* Sleep log */
 .timepicker {
@@ -199,17 +197,57 @@
 .quality-btn-1 {
 	background-color: var(--azure) !important;
 }
-.quality-btn-2 {
-	background-color: var(--turquoise) !important;
+:hover.quality-btn-1 {
+	background-color: var(--cerulean) !important;
 }
+:active.quality-btn-1,
+:focus.quality-btn-1 {
+	outline: 5px solid var(--blue) !important;
+}
+
+.quality-btn-2 {
+	background-color: var(--lime) !important;
+}
+:hover.quality-btn-2 {
+	background-color: var(--chartreuse) !important;
+}
+:active.quality-btn-2,
+:focus.quality-btn-2 {
+	outline: 5px solid var(--turquoise) !important;
+}
+
 .quality-btn-3 {
 	background-color: var(--orange) !important;
 }
+:hover.quality-btn-3 {
+	background-color: var(--lightorange) !important;
+}
+:active.quality-btn-3,
+:focus.quality-btn-3 {
+	outline: 5px solid var(--darkorange) !important;
+}
+
 .quality-btn-4 {
 	background-color: var(--pink) !important;
 }
+:hover.quality-btn-4 {
+	background-color: var(--pastel) !important;
+}
+
+:active.quality-btn-4,
+:focus.quality-btn-4 {
+	outline: 5px solid var(--coral) !important;
+}
+
 .quality-btn-5 {
 	background-color: var(--coral) !important;
+}
+:hover.quality-btn-5 {
+	background-color: var(--pink) !important;
+}
+:active.quality-btn-5,
+:focus.quality-btn-5 {
+	outline: 5px solid var(--coral) !important;
 }
 
 /* Small screen */
@@ -264,12 +302,23 @@
 	background-color: var(--cerulean) !important;
 }
 
+:active.act-btn-social,
+:focus.act-btn-social {
+	outline: 5px solid var(--blue) !important;
+}
+
+
 .act-btn-hobbies {
 	background-color: var(--lime) !important;
 }
 
 :hover.act-btn-hobbies {
 	background-color: var(--chartreuse) !important;
+}
+
+:active.act-btn-hobbies,
+:focus.act-btn-hobbies {
+	outline: 5px solid var(--turquoise) !important;
 }
 
 .act-btn-exercise {
@@ -280,10 +329,20 @@
 	background-color: var(--lightorange) !important;
 }
 
+:active.act-btn-exercise,
+:focus.act-btn-exercise {
+	outline: 5px solid var(--darkorange) !important;
+}
+
 .act-btn-meal {
 	background-color: var(--pink) !important;
 }
 
 :hover.act-btn-meal {
 	background-color: var(--pastel) !important;
+}
+
+:active.act-btn-meal,
+:focus.act-btn-meal {
+	outline: 5px solid var(--coral) !important;
 }
