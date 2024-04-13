@@ -270,7 +270,6 @@ button[class^="quality-btn-"]:hover {
 	outline: 5px solid var(--outline-color) !important;
 }
 
-
 button[class^="quality-btn-"]:active,
 button[class^="quality-btn-"]:focus {
 	outline: 5px solid var(--outline-color) !important;
