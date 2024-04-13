@@ -266,6 +266,11 @@ button[class^="quality-btn-"]:hover {
 	background-color: var(--default-background) !important;
 }
 
+.selected {
+	outline: 5px solid var(--outline-color) !important;
+}
+
+
 button[class^="quality-btn-"]:active,
 button[class^="quality-btn-"]:focus {
 	outline: 5px solid var(--outline-color) !important;

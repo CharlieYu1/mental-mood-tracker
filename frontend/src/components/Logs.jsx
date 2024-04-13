@@ -151,7 +151,7 @@ function Logs() {
 							{[...Array(10)].map((_, index) => (
 								<Button
 									key={index}
-									className={`log-btn-${index + 1}`}
+									className={`log-btn-${index + 1} ${mood == index + 1 ? 'selected' : ''}`}
 									// style={{ backgroundColor: getColor(index) }}
 									onClick={() => handleMoodChange(index + 1)}
 								>
