@@ -31,20 +31,24 @@
   --orange: #FFD15D;
   --lightorange: #fee080;
   --lilac: #9D9DF0;
+  --d-lilac: #8585e3;
   --coral: #FF8891;
   --turquoise: #6AD6BE;
+  --d-turquoise: #48c0a6;
   --blue: #429bf4;
   --azure: #559BE0;
   --cerulean: #80CAFF;
   --lime: #9ADD65;
+  --d-lime: #80c64b;
   --chartreuse: #C8E771;
   --yellow: #FFDE55;
   --pink: #FF99C3;
   --pastel: #FFC2DB;
   --ruby: #FC5765;
+  --d-ruby: #e94351;
   --taupe: #977E65;
   --sandstone: #E7D0A5;
-  --darkorange: #ff9c31;
+  --darkorange: #fb9f3d;
 }
 
 body {

@@ -152,11 +152,11 @@
 	color: var(--azure) !important;
 }
 
-.log-btn {
+.log-btn-row {
 	width: 100%;
 }
 
-.log-btn .btn {
+.log-btn-row .btn {
 	margin: 5px;
 	padding: 0;
 	width: 40px;
@@ -165,8 +165,70 @@
 	font-size: 1.5rem;
 }
 
-.log-btn .active,{
-	outline: 5px solid var(--yellow) !important;
+/* Default styles for all log buttons */
+button[class^="log-btn-"] {
+	background-color: var(--default-background) !important;
+}
+
+button[class^="log-btn-"]:hover {
+	filter: brightness(110%) saturate(90%) contrast(100%);
+	background-color: var(--default-background) !important;
+}
+
+button[class^="log-btn-"]:active,
+button[class^="log-btn-"]:focus {
+	outline: 5px solid var(--outline-color) !important;
+}
+
+/* Specific styles for each log level */
+.log-btn-1 {
+	--default-background: var(--lilac);
+	--outline-color: var(--d-lilac);
+}
+
+.log-btn-2 {
+	--default-background: var(--azure);
+	--outline-color: var(--blue);
+}
+
+.log-btn-3 {
+	--default-background: var(--turquoise);
+	--outline-color: var(--d-turquoise);
+}
+
+.log-btn-4 {
+	--default-background: var(--lime);
+	--outline-color: var(--d-lime);
+}
+
+.log-btn-5 {
+	--default-background: var(--chartreuse);
+	--outline-color: var(--lime);
+}
+
+.log-btn-6 {
+	--default-background: var(--orange);
+	--outline-color: var(--darkorange);
+}
+
+.log-btn-7 {
+	--default-background: var(--pastel);
+	--outline-color: var(--pink);
+}
+
+.log-btn-8 {
+	--default-background: var(--pink);
+	--outline-color: var(--coral);
+}
+
+.log-btn-9 {
+	--default-background: var(--coral);
+	--outline-color: var(--ruby);
+}
+
+.log-btn-10 {
+	--default-background: var(--ruby);
+	--outline-color: var(--d-ruby);
 }
 
 /* Rate mood */
@@ -194,60 +256,45 @@
 	border: 0;
 }
 
+/* Default styles for all quality buttons */
+button[class^="quality-btn-"] {
+	background-color: var(--default-background) !important;
+}
+
+button[class^="quality-btn-"]:hover {
+	filter: brightness(110%) saturate(90%) contrast(100%);
+	background-color: var(--default-background) !important;
+}
+
+button[class^="quality-btn-"]:active,
+button[class^="quality-btn-"]:focus {
+	outline: 5px solid var(--outline-color) !important;
+}
+
+/* Specific styles for each quality level */
 .quality-btn-1 {
-	background-color: var(--azure) !important;
-}
-:hover.quality-btn-1 {
-	background-color: var(--cerulean) !important;
-}
-:active.quality-btn-1,
-:focus.quality-btn-1 {
-	outline: 5px solid var(--blue) !important;
+	--default-background: var(--azure);
+	--outline-color: var(--blue);
 }
 
 .quality-btn-2 {
-	background-color: var(--lime) !important;
-}
-:hover.quality-btn-2 {
-	background-color: var(--chartreuse) !important;
-}
-:active.quality-btn-2,
-:focus.quality-btn-2 {
-	outline: 5px solid var(--turquoise) !important;
+	--default-background: var(--lime);
+	--outline-color: var(--turquoise);
 }
 
 .quality-btn-3 {
-	background-color: var(--orange) !important;
-}
-:hover.quality-btn-3 {
-	background-color: var(--lightorange) !important;
-}
-:active.quality-btn-3,
-:focus.quality-btn-3 {
-	outline: 5px solid var(--darkorange) !important;
+	--default-background: var(--orange);
+	--outline-color: var(--darkorange);
 }
 
 .quality-btn-4 {
-	background-color: var(--pink) !important;
-}
-:hover.quality-btn-4 {
-	background-color: var(--pastel) !important;
-}
-
-:active.quality-btn-4,
-:focus.quality-btn-4 {
-	outline: 5px solid var(--coral) !important;
+	--default-background: var(--pink);
+	--outline-color: var(--coral);
 }
 
 .quality-btn-5 {
-	background-color: var(--coral) !important;
-}
-:hover.quality-btn-5 {
-	background-color: var(--pink) !important;
-}
-:active.quality-btn-5,
-:focus.quality-btn-5 {
-	outline: 5px solid var(--coral) !important;
+	--default-background: var(--coral);
+	--outline-color: var(--coral);
 }
 
 /* Small screen */
@@ -274,39 +321,19 @@
 	margin-bottom: 0.5rem !important;
 }
 
-@media (min-width: 577px) and (max-width: 767px) {
-	.act-btn .btn {
-		width: 80px;
-		height: 80px;
-	}
-	.act-btn-icon {
-		font-size: 3rem;
-	}
-}
-
-@media (max-width: 576px) {
-	.act-btn .btn {
-		width: 65px;
-		height: 65px;
-	}
-	.act-btn-icon {
-		font-size: 2.2rem;
-	}
-}
-
+/* Specific styles for activity buttons */
 .act-btn-social {
 	background-color: var(--azure) !important;
 }
 
-:hover.act-btn-social {
+.act-btn-social:hover {
 	background-color: var(--cerulean) !important;
 }
 
-:active.act-btn-social,
-:focus.act-btn-social {
+.act-btn-social:active,
+.act-btn-social:focus {
 	outline: 5px solid var(--blue) !important;
 }
-
 
 .act-btn-hobbies {
 	background-color: var(--lime) !important;
@@ -345,4 +372,25 @@
 :active.act-btn-meal,
 :focus.act-btn-meal {
 	outline: 5px solid var(--coral) !important;
+}
+
+/* For small screen */
+@media (min-width: 577px) and (max-width: 767px) {
+	.act-btn .btn {
+		width: 80px;
+		height: 80px;
+	}
+	.act-btn-icon {
+		font-size: 3rem;
+	}
+}
+
+@media (max-width: 576px) {
+	.act-btn .btn {
+		width: 65px;
+		height: 65px;
+	}
+	.act-btn-icon {
+		font-size: 2.2rem;
+	}
 }
