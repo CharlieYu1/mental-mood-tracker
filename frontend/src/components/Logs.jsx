@@ -33,6 +33,34 @@ import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import icon1 from "/assets/images/mood-icon-01.png";
 import icon10 from "/assets/images/mood-icon-05.png";
 
+const activitiesList = [
+	{ type: "social", name: "Family Time", icon: faHouseChimneyWindow},
+	{ type: "social", name: "Friend Hangout", icon: faUserGroup},
+	{ type: "social", name: "Friend Date", icon: faHeart},
+	{ type: "social", name: "Social Events", icon: faComment},
+	{ type: "social", name: "Socializing Online", icon: faComputer},
+	{ type: "social", name: "Others", icon: faFaceSmile},
+	{ type: "hobbies", name: "Arts/Music", icon: faPalette},
+	{ type: "hobbies", name: "Sports", icon: faVolleyball},
+	{ type: "hobbies", name: "DIY", icon: faScrewdriverWrench},
+	{ type: "hobbies", name: "Learning", icon: faGraduationCap},
+	{ type: "hobbies", name: "Travel", icon: faPersonWalkingLuggage},
+	{ type: "hobbies", name: "Others", icon: faFaceSmile},
+	{ type: "exercises", name: "Jogging", icon: faPersonRunning},
+	{ type: "exercises", name: "Gym", icon: faDumbbell},
+	{ type: "exercises", name: "Yoga", icon: faSpa},
+	{ type: "exercises", name: "Cycling", icon: faPersonBiking},
+	{ type: "exercises", name: "Walking", icon: faPersonWalking},
+	{ type: "exercises", name: "Others", icon: faFaceSmile},
+	{ type: "good meals", name: "Breakfast", icon: faMugSaucer},
+	{ type: "good meals", name: "Lunch", icon: faUtensils},
+	{ type: "good meals", name: "Dinner", icon: faBellConcierge},
+	{ type: "good meals", name: "Others", icon: faFaceSmile}
+]
+
+
+
+
 function Logs() {
 	// Initialize state for the current date
 	const [currentDate, setCurrentDate] = useState(dayjs());
@@ -285,394 +313,94 @@ function Logs() {
 					</Card.Title>
 					<Card.Body className="d-flex flex-column w-100">
 						{/* Social icons */}
-						<Row className="act-btn w-100">
+						<Row className="act-btn w-100 mt-4">
 							<Card.Title>Social:</Card.Title>
-							<Col
-								xs={6}
-								sm={3}
-								md={4}
-								lg={2}
-								className="p-0 align-items-center text-center"
-							>
-								<Button className="rounded-circle act-btn-social">
-									<FontAwesomeIcon
-										icon={faHouseChimneyWindow}
-										className="act-btn-icon"
-										onClick={goToNextMonth}
-									/>
-								</Button>
-								<Card.Text>Family Time</Card.Text>
-							</Col>
 
-							<Col
-								xs={6}
-								sm={3}
-								md={4}
-								lg={2}
-								className="p-0 align-items-center text-center"
-							>
-								<Button className="rounded-circle act-btn-social">
-									<FontAwesomeIcon
-										icon={faUserGroup}
-										className="act-btn-icon"
-										onClick={goToNextMonth}
-									/>
-								</Button>
-								<Card.Text>Friend Hangout</Card.Text>
-							</Col>
-
-							<Col
-								xs={6}
-								sm={3}
-								md={4}
-								lg={2}
-								className="p-0 align-items-center text-center"
-							>
-								<Button className="rounded-circle act-btn-social">
-									<FontAwesomeIcon
-										icon={faHeart}
-										className="act-btn-icon"
-										onClick={goToNextMonth}
-									/>
-								</Button>
-								<Card.Text>Date</Card.Text>
-							</Col>
-
-							<Col
-								xs={6}
-								sm={3}
-								md={4}
-								lg={2}
-								className="p-0 align-items-center text-center"
-							>
-								<Button className="rounded-circle act-btn-social">
-									<FontAwesomeIcon
-										icon={faComment}
-										className="act-btn-icon"
-										onClick={goToNextMonth}
-									/>
-								</Button>
-								<Card.Text>Social Events</Card.Text>
-							</Col>
-
-							<Col
-								xs={6}
-								sm={3}
-								md={4}
-								lg={2}
-								className="p-0 align-items-center text-center"
-							>
-								<Button className="rounded-circle act-btn-social">
-									<FontAwesomeIcon
-										icon={faComputer}
-										className="act-btn-icon"
-										onClick={goToNextMonth}
-									/>
-								</Button>
-								<Card.Text>Socializing Online</Card.Text>
-							</Col>
-
-							<Col
-								xs={6}
-								sm={3}
-								md={4}
-								lg={2}
-								className="p-0 align-items-center text-center"
-							>
-								<Button className="rounded-circle act-btn-social">
-									<FontAwesomeIcon
-										icon={faFaceSmile}
-										className="act-btn-icon"
-										onClick={goToNextMonth}
-									/>
-								</Button>
-								<Card.Text>Others</Card.Text>
-							</Col>
+							{activitiesList.map(activity => activity.type === "social" ?
+								<Col 
+									xs={6} sm={3} md={4} lg={2}
+									className="p-0 align-items-center text-center"
+									key={activity.name}
+								>
+									<Button className="rounded-circle act-btn-social">
+										<FontAwesomeIcon
+											icon={activity.icon}
+											className="act-btn-icon"
+											onClick={goToNextMonth} // TODO: change this
+										/>
+									</Button>
+									<Card.Text>{activity.name}</Card.Text>
+								</Col>
+							: null)}
 						</Row>
 
 						{/* Hobbies icons */}
 						<Row className="act-btn w-100 mt-4">
 							<Card.Title>Hobbies:</Card.Title>
-							<Col
-								xs={6}
-								sm={3}
-								md={4}
-								lg={2}
-								className="p-0 align-items-center text-center"
-							>
-								<Button className="rounded-circle act-btn-hobbies">
-									<FontAwesomeIcon
-										icon={faPalette}
-										className="act-btn-icon"
-										onClick={goToNextMonth}
-									/>
-								</Button>
-								<Card.Text>Arts/ Music</Card.Text>
-							</Col>
 
-							<Col
-								xs={6}
-								sm={3}
-								md={4}
-								lg={2}
-								className="p-0 align-items-center text-center"
-							>
-								<Button className="rounded-circle act-btn-hobbies">
-									<FontAwesomeIcon
-										icon={faVolleyball}
-										className="act-btn-icon"
-										onClick={goToNextMonth}
-									/>
-								</Button>
-								<Card.Text>Sports</Card.Text>
-							</Col>
-
-							<Col
-								xs={6}
-								sm={3}
-								md={4}
-								lg={2}
-								className="p-0 align-items-center text-center"
-							>
-								<Button className="rounded-circle act-btn-hobbies">
-									<FontAwesomeIcon
-										icon={faScrewdriverWrench}
-										className="act-btn-icon"
-										onClick={goToNextMonth}
-									/>
-								</Button>
-								<Card.Text>DIY</Card.Text>
-							</Col>
-
-							<Col
-								xs={6}
-								sm={3}
-								md={4}
-								lg={2}
-								className="p-0 align-items-center text-center"
-							>
-								<Button className="rounded-circle act-btn-hobbies">
-									<FontAwesomeIcon
-										icon={faGraduationCap}
-										className="act-btn-icon"
-										onClick={goToNextMonth}
-									/>
-								</Button>
-								<Card.Text>Learning</Card.Text>
-							</Col>
-
-							<Col
-								xs={6}
-								sm={3}
-								md={4}
-								lg={2}
-								className="p-0 align-items-center text-center"
-							>
-								<Button className="rounded-circle act-btn-hobbies">
-									<FontAwesomeIcon
-										icon={faPersonWalkingLuggage}
-										className="act-btn-icon"
-										onClick={goToNextMonth}
-									/>
-								</Button>
-								<Card.Text>Travel</Card.Text>
-							</Col>
-
-							<Col
-								xs={6}
-								sm={3}
-								md={4}
-								lg={2}
-								className="p-0 align-items-center text-center"
-							>
-								<Button className="rounded-circle act-btn-hobbies">
-									<FontAwesomeIcon
-										icon={faFaceSmile}
-										className="act-btn-icon"
-										onClick={goToNextMonth}
-									/>
-								</Button>
-								<Card.Text>Others</Card.Text>
-							</Col>
+							{activitiesList.map(activity => activity.type === "hobbies" ?
+								<Col 
+									xs={6} sm={3} md={4} lg={2}
+									className="p-0 align-items-center text-center"
+									key={activity.name}
+								>
+									<Button className="rounded-circle act-btn-hobbies">
+										<FontAwesomeIcon
+											icon={activity.icon}
+											className="act-btn-icon"
+											onClick={goToNextMonth} // TODO: change this
+										/>
+									</Button>
+									<Card.Text>{activity.name}</Card.Text>
+								</Col>
+							: null)}
 						</Row>
+
 
 						{/* Exercises icons */}
 						<Row className="act-btn w-100 mt-4">
 							<Card.Title>Exercises:</Card.Title>
-							<Col
-								xs={6}
-								sm={3}
-								md={4}
-								lg={2}
-								className="p-0 align-items-center text-center"
-							>
-								<Button className="rounded-circle act-btn-exercise">
-									<FontAwesomeIcon
-										icon={faPersonRunning}
-										className="act-btn-icon"
-										onClick={goToNextMonth}
-									/>
-								</Button>
-								<Card.Text>Jogging</Card.Text>
-							</Col>
 
-							<Col
-								xs={6}
-								sm={3}
-								md={4}
-								lg={2}
-								className="p-0 align-items-center text-center"
-							>
-								<Button className="rounded-circle act-btn-exercise">
-									<FontAwesomeIcon
-										icon={faDumbbell}
-										className="act-btn-icon"
-										onClick={goToNextMonth}
-									/>
-								</Button>
-								<Card.Text>Gym</Card.Text>
-							</Col>
-
-							<Col
-								xs={6}
-								sm={3}
-								md={4}
-								lg={2}
-								className="p-0 align-items-center text-center"
-							>
-								<Button className="rounded-circle act-btn-exercise">
-									<FontAwesomeIcon
-										icon={faSpa}
-										className="act-btn-icon"
-										onClick={goToNextMonth}
-									/>
-								</Button>
-								<Card.Text>Yoga</Card.Text>
-							</Col>
-
-							<Col
-								xs={6}
-								sm={3}
-								md={4}
-								lg={2}
-								className="p-0 align-items-center text-center"
-							>
-								<Button className="rounded-circle act-btn-exercise">
-									<FontAwesomeIcon
-										icon={faPersonBiking}
-										className="act-btn-icon"
-										onClick={goToNextMonth}
-									/>
-								</Button>
-								<Card.Text>Cycling</Card.Text>
-							</Col>
-
-							<Col
-								xs={6}
-								sm={3}
-								md={4}
-								lg={2}
-								className="p-0 align-items-center text-center"
-							>
-								<Button className="rounded-circle act-btn-exercise">
-									<FontAwesomeIcon
-										icon={faPersonWalking}
-										className="act-btn-icon"
-										onClick={goToNextMonth}
-									/>
-								</Button>
-								<Card.Text>Walking</Card.Text>
-							</Col>
-
-							<Col
-								xs={6}
-								sm={3}
-								md={4}
-								lg={2}
-								className="p-0 align-items-center text-center"
-							>
-								<Button className="rounded-circle act-btn-exercise">
-									<FontAwesomeIcon
-										icon={faFaceSmile}
-										className="act-btn-icon"
-										onClick={goToNextMonth}
-									/>
-								</Button>
-								<Card.Text>Others</Card.Text>
-							</Col>
+							{activitiesList.map(activity => activity.type === "exercises" ?
+								<Col 
+									xs={6} sm={3} md={4} lg={2}
+									className="p-0 align-items-center text-center"
+									key={activity.name}
+								>
+									<Button className="rounded-circle act-btn-exercise">
+										<FontAwesomeIcon
+											icon={activity.icon}
+											className="act-btn-icon"
+											onClick={goToNextMonth} // TODO: change this
+										/>
+									</Button>
+									<Card.Text>{activity.name}</Card.Text>
+								</Col>
+							: null)}
 						</Row>
 
 						{/* Good Meals icons */}
 						<Row className="act-btn w-100 mt-4">
 							<Card.Title>Good Meals:</Card.Title>
-							<Col
-								xs={6}
-								sm={3}
-								md={4}
-								lg={2}
-								className="p-0 align-items-center text-center"
-							>
-								<Button className="rounded-circle act-btn-meal">
-									<FontAwesomeIcon
-										icon={faMugSaucer}
-										className="act-btn-icon"
-										onClick={goToNextMonth}
-									/>
-								</Button>
-								<Card.Text>Breakfast</Card.Text>
-							</Col>
 
-							<Col
-								xs={6}
-								sm={3}
-								md={4}
-								lg={2}
-								className="p-0 align-items-center text-center"
-							>
-								<Button className="rounded-circle act-btn-meal">
-									<FontAwesomeIcon
-										icon={faUtensils}
-										className="act-btn-icon"
-										onClick={goToNextMonth}
-									/>
-								</Button>
-								<Card.Text>Lunch</Card.Text>
-							</Col>
-
-							<Col
-								xs={6}
-								sm={3}
-								md={4}
-								lg={2}
-								className="p-0 align-items-center text-center"
-							>
-								<Button className="rounded-circle act-btn-meal">
-									<FontAwesomeIcon
-										icon={faBellConcierge}
-										className="act-btn-icon"
-										onClick={goToNextMonth}
-									/>
-								</Button>
-								<Card.Text>Dinner</Card.Text>
-							</Col>
-
-							<Col
-								xs={6}
-								sm={3}
-								md={4}
-								lg={2}
-								className="p-0 align-items-center text-center"
-							>
-								<Button className="rounded-circle act-btn-meal">
-									<FontAwesomeIcon
-										icon={faFaceSmile}
-										className="act-btn-icon"
-										onClick={goToNextMonth}
-									/>
-								</Button>
-								<Card.Text>Others</Card.Text>
-							</Col>
+							{activitiesList.map(activity => activity.type === "good meals" ?
+								<Col 
+									xs={6} sm={3} md={4} lg={2}
+									className="p-0 align-items-center text-center"
+									key={activity.name}
+								>
+									<Button className="rounded-circle act-btn-meal">
+										<FontAwesomeIcon
+											icon={activity.icon}
+											className="act-btn-icon"
+											onClick={goToNextMonth} // TODO: change this
+										/>
+									</Button>
+									<Card.Text>{activity.name}</Card.Text>
+								</Col>
+							: null)}
 						</Row>
+						
 					</Card.Body>
 				</Card>
 			</Row>
