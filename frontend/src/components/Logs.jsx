@@ -52,10 +52,10 @@ const activitiesList = [
 	{ type: "exercises", name: "Cycling", icon: faPersonBiking},
 	{ type: "exercises", name: "Walking", icon: faPersonWalking},
 	{ type: "exercises", name: "Others", icon: faFaceSmile},
-	{ type: "good meals", name: "Breakfast", icon: faMugSaucer},
-	{ type: "good meals", name: "Lunch", icon: faUtensils},
-	{ type: "good meals", name: "Dinner", icon: faBellConcierge},
-	{ type: "good meals", name: "Others", icon: faFaceSmile}
+	{ type: "meal", name: "Breakfast", icon: faMugSaucer},
+	{ type: "meal", name: "Lunch", icon: faUtensils},
+	{ type: "meal", name: "Dinner", icon: faBellConcierge},
+	{ type: "meal", name: "Others", icon: faFaceSmile}
 ]
 
 
@@ -74,7 +74,10 @@ function Logs() {
 	const [sleepDurationDisplay, setSleepDurationDisplay] = useState("");
 	const [sleepQuality, setSleepQuality] = useState(null);
 	const [sleepRemarks, setSleepRemarks] = useState(null);
-	const [activities, setActivities] = useState([]);
+	const [activities, setActivities] = useState(Object.fromEntries(
+		activitiesList.map(activity => [activity.name, false])
+	));
+	// console.log(activities)
 
 	// handlers for log items
 	const handleMoodChange = (mood) => {
@@ -94,6 +97,24 @@ function Logs() {
 	const handleTimeWakeUpChange = (time) => {
 		setTimeWakeUp(time);
 	};
+
+	const handleSleepQualityChange = (sleepQuality) => {
+		setSleepQuality(sleepQuality);
+		// console.log(sleepQuality)
+	}
+
+	const handleSleepRemarksChange = (event) => {
+		setSleepRemarks(event.target.value);
+		// console.log(sleepRemarks)
+	};
+
+	const handleActivityChange = (activity) => {
+		setActivities({
+			...activities,
+			[activity]: !activities[activity]
+		})
+		console.log(activities)
+	}
 
 	// useEffect for mood changes
 	useEffect(() => {}, [mood]);
@@ -179,7 +200,7 @@ function Logs() {
 							{[...Array(10)].map((_, index) => (
 								<Button
 									key={index}
-									className={`log-btn-${index + 1} ${mood == index + 1 ? 'selected' : ''}`}
+									className={`log-btn-${index + 1} ${mood === index + 1 ? 'selected' : ''}`}
 									// style={{ backgroundColor: getColor(index) }}
 									onClick={() => handleMoodChange(index + 1)}
 								>
@@ -256,7 +277,7 @@ function Logs() {
 								lg={2}
 								className="align-items-center text-center px-0"
 							>
-								<Button className="quality-btn-5">Excellent</Button>
+								<Button className={`quality-btn-${5} ${sleepQuality === 5 ? 'selected' : ''}`} onClick={() => handleSleepQualityChange(5)}>Excellent</Button>
 							</Col>
 							<Col
 								xs={6}
@@ -265,7 +286,7 @@ function Logs() {
 								lg={2}
 								className="align-items-center text-center px-0"
 							>
-								<Button className="quality-btn-4">Good</Button>
+								<Button className={`quality-btn-${4} ${sleepQuality === 4 ? 'selected' : ''}`} onClick={() => handleSleepQualityChange(4)}>Good</Button>
 							</Col>
 							<Col
 								xs={6}
@@ -274,7 +295,7 @@ function Logs() {
 								lg={2}
 								className="align-items-center text-center px-0"
 							>
-								<Button className="quality-btn-3">Fair</Button>
+								<Button className={`quality-btn-${3} ${sleepQuality === 3 ? 'selected' : ''}`} onClick={() => handleSleepQualityChange(3)}>Fair</Button>
 							</Col>
 							<Col
 								xs={6}
@@ -283,7 +304,7 @@ function Logs() {
 								lg={2}
 								className="align-items-center text-center px-0"
 							>
-								<Button className="quality-btn-2">Poor</Button>
+								<Button className={`quality-btn-${2} ${sleepQuality === 2 ? 'selected' : ''}`} onClick={() => handleSleepQualityChange(2)}>Poor</Button>
 							</Col>
 							<Col
 								xs={6}
@@ -292,14 +313,14 @@ function Logs() {
 								lg={2}
 								className="align-items-center text-center px-0"
 							>
-								<Button className="quality-btn-1">Very Poor</Button>
+								<Button className={`quality-btn-${1} ${sleepQuality === 1 ? 'selected' : ''}`} onClick={() => handleSleepQualityChange(1)}>Very Poor</Button>
 							</Col>
 						</Row>
 					</Card.Body>
 
 					<Card.Body className="w-100">
 						<Form.Group className="w-100">
-							<Form.Control as="textarea" rows={3} placeholder="Note... (Optional)" />
+							<Form.Control as="textarea" rows={3} placeholder="Note... (Optional)" onChange={handleSleepRemarksChange} />
 						</Form.Group>
 					</Card.Body>
 				</Card>
@@ -322,11 +343,11 @@ function Logs() {
 									className="p-0 align-items-center text-center"
 									key={activity.name}
 								>
-									<Button className="rounded-circle act-btn-social">
+									<Button className={`rounded-circle act-btn-social ${activities[activity.name] === true ? 'selected' : ''}`}>
 										<FontAwesomeIcon
 											icon={activity.icon}
 											className="act-btn-icon"
-											onClick={goToNextMonth} // TODO: change this
+											onClick={() => handleActivityChange(activity.name)}
 										/>
 									</Button>
 									<Card.Text>{activity.name}</Card.Text>
@@ -348,7 +369,7 @@ function Logs() {
 										<FontAwesomeIcon
 											icon={activity.icon}
 											className="act-btn-icon"
-											onClick={goToNextMonth} // TODO: change this
+											onClick={() => handleActivityChange(activity.name)}
 										/>
 									</Button>
 									<Card.Text>{activity.name}</Card.Text>
@@ -371,7 +392,7 @@ function Logs() {
 										<FontAwesomeIcon
 											icon={activity.icon}
 											className="act-btn-icon"
-											onClick={goToNextMonth} // TODO: change this
+											onClick={() => handleActivityChange(activity.name)}
 										/>
 									</Button>
 									<Card.Text>{activity.name}</Card.Text>
@@ -383,7 +404,7 @@ function Logs() {
 						<Row className="act-btn w-100 mt-4">
 							<Card.Title>Good Meals:</Card.Title>
 
-							{activitiesList.map(activity => activity.type === "good meals" ?
+							{activitiesList.map(activity => activity.type === "meal" ?
 								<Col 
 									xs={6} sm={3} md={4} lg={2}
 									className="p-0 align-items-center text-center"
@@ -393,14 +414,14 @@ function Logs() {
 										<FontAwesomeIcon
 											icon={activity.icon}
 											className="act-btn-icon"
-											onClick={goToNextMonth} // TODO: change this
+											onClick={() => handleActivityChange(activity.name)}
 										/>
 									</Button>
 									<Card.Text>{activity.name}</Card.Text>
 								</Col>
 							: null)}
 						</Row>
-						
+
 					</Card.Body>
 				</Card>
 			</Row>

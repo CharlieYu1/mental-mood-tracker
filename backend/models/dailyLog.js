@@ -13,15 +13,13 @@ const dailyLogSchema = new Schema({
     sleepDuration: { type: Number },
 
     sleepQuality: { 
-        type: String, 
-        enum: ['Very Poor', 'Poor', 'Fair', 'Good', 'Very Good']
+        type: Number, min: 1, max: 5
     },
 
     sleepRemarks: { type: String },
 
     activities: {
-        type: [String],
-        default: []
+        type: Object
     }
 })
 
