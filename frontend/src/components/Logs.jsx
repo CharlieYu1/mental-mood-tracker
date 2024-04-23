@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Container, Row, Card, Button, Col, Form } from "react-bootstrap";
 import dayjs from "dayjs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -33,6 +33,9 @@ import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import icon1 from "/assets/images/mood-icon-01.png";
 import icon10 from "/assets/images/mood-icon-05.png";
 
+import logsService from '../services/logs'
+import { AuthContext } from "../components/AuthContext";
+
 const activitiesList = [
 	{ type: "social", name: "Family Time", icon: faHouseChimneyWindow},
 	{ type: "social", name: "Friend Hangout", icon: faUserGroup},
@@ -62,6 +65,9 @@ const activitiesList = [
 
 
 function Logs() {
+	// loads user from AuthContext
+	const { token, user, loading } = useContext(AuthContext);
+
 	// Initialize state for the current date
 	const [currentDate, setCurrentDate] = useState(dayjs());
 
@@ -113,7 +119,29 @@ function Logs() {
 			...activities,
 			[activity]: !activities[activity]
 		})
-		console.log(activities)
+		// console.log(activities)
+	}
+
+	const handleSaveLog = async (e) => {
+		e.preventDefault()
+		try {
+			const response = await logsService.saveLog({
+				date: currentDate,
+				user: user,
+				mood: mood,
+				moodRemarks: moodRemarks,
+				timeToBed: timeToBed,
+				timeWakeUp: timeWakeUp,
+				sleepDuration: sleepDuration,
+				sleepQuality: sleepQuality,
+				sleepRemarks: sleepRemarks,
+				activities: activities
+			}, token)
+			console.log("Save Log successful! ", response)
+		} catch (error) {
+			console.error("Save failed", error)
+		}
+
 	}
 
 	// useEffect for mood changes
@@ -185,7 +213,7 @@ function Logs() {
 
 			{/* Button */}
 			<Row className="justify-content-center">
-				<Button className="save-btn">Save</Button>
+				<Button className="save-btn" onClick={handleSaveLog}>Save</Button>
 			</Row>
 
 			{/* Dashboard cards - Rate Mood */}

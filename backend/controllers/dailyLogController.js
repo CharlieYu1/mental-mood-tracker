@@ -2,6 +2,8 @@ const User = require('../models/UsersModel')
 const DailyLog = require('../models/dailyLog')
 
 exports.saveLog = async (req, res, next) => {
+    console.log(req.body)
+
     const userId = req.user.id;
     const date = req.body.date || new Date().setHours(0, 0, 0, 0);
 
@@ -37,7 +39,8 @@ exports.saveLog = async (req, res, next) => {
             dailyLog.sleepRemarks = req.body.sleepRemarks
             dailyLog.activities = req.body.activities
         }
-               
+        
+        console.log(dailyLog)
 
         dailyLog.save().then(dailyLog => {
             res.json({

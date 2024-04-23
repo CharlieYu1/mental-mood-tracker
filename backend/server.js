@@ -21,7 +21,7 @@ app.use(cors())
 app.use(logger("dev"))
 
 app.use('/api/users', usersRouter)
-app.use('/api/dailylogs', dailyLogsRouter)
+app.use('/api/logs', dailyLogsRouter)
 
 if (process.env.NODE_ENV === 'test') {
     const testingRouter = require('./controllers/testing')
