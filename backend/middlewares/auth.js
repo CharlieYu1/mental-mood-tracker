@@ -3,9 +3,8 @@ const jwt = require('jsonwebtoken')
 const secret = process.env.SECRET
 
 const auth = (req, res, next) => {
-
+ 
     const authorization = req.get('Authorization')
-    // console.log(authorization)
 
     if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
         req.token = authorization.substring(7)

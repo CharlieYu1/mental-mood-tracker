@@ -42,23 +42,23 @@ const activitiesList = [
 	{ type: "social", name: "Friend Date", icon: faHeart},
 	{ type: "social", name: "Social Events", icon: faComment},
 	{ type: "social", name: "Socializing Online", icon: faComputer},
-	{ type: "social", name: "Others", icon: faFaceSmile},
+	{ type: "social", name: "Other Socials", icon: faFaceSmile},
 	{ type: "hobbies", name: "Arts/Music", icon: faPalette},
 	{ type: "hobbies", name: "Sports", icon: faVolleyball},
 	{ type: "hobbies", name: "DIY", icon: faScrewdriverWrench},
 	{ type: "hobbies", name: "Learning", icon: faGraduationCap},
 	{ type: "hobbies", name: "Travel", icon: faPersonWalkingLuggage},
-	{ type: "hobbies", name: "Others", icon: faFaceSmile},
+	{ type: "hobbies", name: "Other Hobbies", icon: faFaceSmile},
 	{ type: "exercises", name: "Jogging", icon: faPersonRunning},
 	{ type: "exercises", name: "Gym", icon: faDumbbell},
 	{ type: "exercises", name: "Yoga", icon: faSpa},
 	{ type: "exercises", name: "Cycling", icon: faPersonBiking},
 	{ type: "exercises", name: "Walking", icon: faPersonWalking},
-	{ type: "exercises", name: "Others", icon: faFaceSmile},
+	{ type: "exercises", name: "Other Exercises", icon: faFaceSmile},
 	{ type: "meal", name: "Breakfast", icon: faMugSaucer},
 	{ type: "meal", name: "Lunch", icon: faUtensils},
 	{ type: "meal", name: "Dinner", icon: faBellConcierge},
-	{ type: "meal", name: "Others", icon: faFaceSmile}
+	{ type: "meal", name: "Other Meals", icon: faFaceSmile}
 ]
 
 
@@ -84,6 +84,32 @@ function Logs() {
 		activitiesList.map(activity => [activity.name, false])
 	));
 	// console.log(activities)
+
+	// fetch logs on load
+	useEffect(() => {
+	  logsService.getLog(token, currentDate.format('YYYY-MM-DD')).then(res => {
+		setMood(res.dailyLog.mood)
+		setMoodRemarks(res.dailyLog.moodRemarks)
+		if (res.dailyLog.timeToBed) {
+			setTimeToBed(dayjs(new Date(res.dailyLog.timeToBed)))
+		} else {
+			setTimeToBed(null)
+		}
+		if (res.dailyLog.timeWakeUp) {
+			setTimeWakeUp(dayjs(new Date(res.dailyLog.timeWakeUp)))
+		} else {
+			setTimeWakeUp(null)
+		}
+		setSleepDuration(res.dailyLog.sleepDuration)
+		setSleepQuality(res.dailyLog.sleepQuality)
+		setSleepRemarks(res.dailyLog.sleepRemarks)
+		setActivities(res.dailyLog.activities)
+
+	  })
+	
+	  
+	}, [token, currentDate])
+	
 
 	// handlers for log items
 	const handleMoodChange = (mood) => {
@@ -126,7 +152,7 @@ function Logs() {
 		e.preventDefault()
 		try {
 			const response = await logsService.saveLog({
-				date: currentDate,
+				date: currentDate.format('YYYY-MM-DD'),
 				user: user,
 				mood: mood,
 				moodRemarks: moodRemarks,
@@ -149,8 +175,7 @@ function Logs() {
 
 	// useEffect hook for timeToBed and timeWakeUp changes
 	useEffect(() => {
-		// console.log("Time to bed: ", timeToBed)
-		// console.log("Time wake up: ", timeWakeUp)
+		
 		if (timeToBed && timeWakeUp) {
 			let timeSleepInMinutes = timeWakeUp.diff(timeToBed, "m");
 			if (timeSleepInMinutes < 0) {
@@ -165,17 +190,20 @@ function Logs() {
 					.padStart(2, "0")}`
 			);
 			// console.log("sleepDuration: ", sleepDuration);
+		} else {
+			setSleepDurationDisplay("")
+			setSleepDuration(null)
 		}
 	}, [timeToBed, timeWakeUp, sleepDuration]);
 
 	// Navigate to the previous month
-	const goToPreviousMonth = () => {
-		setCurrentDate(currentDate.subtract(1, "month"));
+	const goToPreviousDay = () => {
+		setCurrentDate(currentDate.subtract(1, "day"));
 	};
 
 	// Navigate to the next month
-	const goToNextMonth = () => {
-		setCurrentDate(currentDate.add(1, "month"));
+	const goToNextDay = () => {
+		setCurrentDate(currentDate.add(1, "day"));
 	};
 
 	let formattedDate;
@@ -199,13 +227,13 @@ function Logs() {
 						<FontAwesomeIcon
 							icon={faCaretLeft}
 							className="dashboard-date-arrow"
-							onClick={goToPreviousMonth}
+							onClick={goToPreviousDay}
 						/>
 						{formattedDate}
 						<FontAwesomeIcon
 							icon={faCaretRight}
 							className="dashboard-date-arrow"
-							onClick={goToNextMonth}
+							onClick={goToNextDay}
 						/>
 					</h2>
 				</Col>
@@ -266,7 +294,7 @@ function Logs() {
 										<DemoContainer components={["TimePicker"]}>
 											<DemoItem label="Time Went to Bed">
 												<TimePicker
-													defaultValue={todayStartOfTheDay}
+													value={timeToBed}
 													onChange={handleTimeToBedChange}
 												/>
 											</DemoItem>
@@ -279,7 +307,7 @@ function Logs() {
 										<DemoContainer components={["TimePicker"]}>
 											<DemoItem label="Time Woke up">
 												<TimePicker
-													defaultValue={todayStartOfTheDay}
+													value={timeWakeUp}
 													onChange={handleTimeWakeUpChange}
 												/>
 											</DemoItem>

@@ -1,11 +1,36 @@
 const User = require('../models/UsersModel')
 const DailyLog = require('../models/dailyLog')
 
+const activitiesList = [
+	{ type: "social", name: "Family Time"},
+	{ type: "social", name: "Friend Hangout"},
+	{ type: "social", name: "Friend Date"},
+	{ type: "social", name: "Social Events"},
+	{ type: "social", name: "Socializing Online"},
+	{ type: "social", name: "Other Socials"},
+	{ type: "hobbies", name: "Arts/Music"},
+	{ type: "hobbies", name: "Sports"},
+	{ type: "hobbies", name: "DIY"},
+	{ type: "hobbies", name: "Learning"},
+	{ type: "hobbies", name: "Travel"},
+	{ type: "hobbies", name: "Other Hobbies"},
+	{ type: "exercises", name: "Jogging"},
+	{ type: "exercises", name: "Gym"},
+	{ type: "exercises", name: "Yoga"},
+	{ type: "exercises", name: "Cycling"},
+	{ type: "exercises", name: "Walking"},
+	{ type: "exercises", name: "Other Exercises"},
+	{ type: "meal", name: "Breakfast"},
+	{ type: "meal", name: "Lunch"},
+	{ type: "meal", name: "Dinner"},
+	{ type: "meal", name: "Other Meals"}
+]
+
 exports.saveLog = async (req, res, next) => {
-    console.log(req.body)
 
     const userId = req.user.id;
-    const date = req.body.date || new Date().setHours(0, 0, 0, 0);
+    const date = req.body.date;
+
 
 
     await DailyLog.findOne({ date: date, user: userId }).then((dailyLog, err) => {
@@ -39,8 +64,6 @@ exports.saveLog = async (req, res, next) => {
             dailyLog.sleepRemarks = req.body.sleepRemarks
             dailyLog.activities = req.body.activities
         }
-        
-        console.log(dailyLog)
 
         dailyLog.save().then(dailyLog => {
             res.json({
@@ -56,5 +79,46 @@ exports.saveLog = async (req, res, next) => {
     })
 }
 
-// TODO: controller routes for saving other parts of mood logs, and get routes
 
+exports.getLog = async (req, res, next) => {
+
+    const userId = req.user.id;
+    const date = req.query.date;
+
+    console.log(userId, date)
+    // console.log(req)
+
+    await DailyLog.findOne({ date: date, user: userId }).then((dailyLog, err) => {
+        if (err) {
+            res.status(400).json({
+                message: "Error fetching mood log from database"
+            })
+            return ;
+        }
+        if (!dailyLog) {
+            dailyLog = new DailyLog({
+                date: date,
+                user: userId,
+                mood: null,
+                moodRemarks: "",
+                timeToBed: null,
+                timeWakeUp: null,
+                sleepDuration: null,
+                sleepQuality: null,
+                sleepRemarks: null,
+                activities: Object.fromEntries(
+                    activitiesList.map(activity => [activity.name, false])
+                )
+            })
+        } else {
+            console.log("dailyLog found")
+            console.log(dailyLog)
+        }
+
+
+        res.json({
+            message: "fetched dailyLog successfully",
+            dailyLog: dailyLog
+        })
+    })
+}

@@ -1,14 +1,14 @@
 import axios from 'axios'
-const baseUrl = 'http://192.168.1.124:3000/api/logs/saveLog' // may change to include userid in route
+const baseUrl = 'http://192.168.1.124:3000/api/logs' // may change to include userid in route
 
+const getLog = async (token, date) => {
 
-const getAll = () => {
-    const config = {
-        headers: { 'Authorization': token }
-    }
+    const response = await axios.get(`${baseUrl}/getLog`, {
+        headers: { 'Authorization': `Bearer ${token}`},
+        params: { date: date }
+    })
+    return response.data
 
-    const request = axios.get(baseUrl, config)
-    return request.then(response => response.data)
 }
 
 const saveLog = async (newObject, token) => {
@@ -19,10 +19,8 @@ const saveLog = async (newObject, token) => {
         headers: { 'Authorization': `Bearer ${token}` }
     }
 
-    console.log(config)
-
-    const response = await axios.post(baseUrl, newObject, config)
+    const response = await axios.post(`${baseUrl}/saveLog`, newObject, config)
     return response.data
 }
 
-export default { getAll, saveLog }
+export default { getLog, saveLog }

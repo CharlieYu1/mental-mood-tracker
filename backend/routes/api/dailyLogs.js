@@ -5,6 +5,6 @@ const dailyLogController = require('./../../controllers/dailyLogController')
 
 router.post('/saveLog', auth, dailyLogController.saveLog)
 
-// router.get('/logs', auth, dailyLogController.fetchLogs)
+router.get('/getLog', auth, dailyLogController.getLog)
 
 module.exports = router;
