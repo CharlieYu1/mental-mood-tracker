@@ -23,4 +23,14 @@ const saveLog = async (newObject, token) => {
     return response.data
 }
 
-export default { getLog, saveLog }
+const getMonthlyMoods = async (token, date) => {
+
+    const response = await axios.get(`${baseUrl}/getMonthlyMoods`, {
+        headers: { 'Authorization': `Bearer ${token}`},
+        params: { date: date }
+    })
+    return response.data
+
+}
+
+export default { getLog, saveLog, getMonthlyMoods }

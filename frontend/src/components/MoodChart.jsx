@@ -9,7 +9,9 @@ import {
 	LineSeries,
 } from "react-vis";
 
+
 function MoodChart() {
+
 	return (
     <div className="containerStyle">
 		<XYPlot width={500} height={300} margin={{ bottom: 100 }}

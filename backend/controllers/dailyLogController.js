@@ -122,3 +122,44 @@ exports.getLog = async (req, res, next) => {
         })
     })
 }
+
+exports.getMonthlyMoods = async (req, res, next) => {
+    
+    const userId = req.user.id;
+    const date = req.query.date;
+
+    const [year, month] = date.split('-')
+
+    const startOfMonth = `${year}-${month}-01`
+
+    const startOfNextMonth = ( () => {
+        if (Number(month) < 9) {
+            return `${year}-0${Number(month)+1}-01`
+        } else if (Number(month) < 12) {
+            return `${year}-${Number(month)+1}-01`
+        } else {
+            return `${Number(year)+1}-01-01`
+        }
+    })()
+    
+    console.log(startOfMonth)
+    console.log(startOfNextMonth)
+    
+
+    // fetch mood values only for the month
+    await DailyLog.find({
+        date: {
+            $gte: startOfMonth,
+            $lt: startOfNextMonth
+        },
+        user: userId
+    }).select({ "date": 1, "mood": 1}).then((values, err) => {
+        if (err) {
+            res.status(400).json({
+                message: "Error fetching monthly mood data from database"
+            })
+            return ;
+        }
+        console.log("Values found: ", values)
+    })
+}
