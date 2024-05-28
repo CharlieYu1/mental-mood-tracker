@@ -12,18 +12,21 @@ import {
 function MoodChart() {
 	return (
     <div className="containerStyle">
-		<XYPlot width={500} height={300}>
+		<XYPlot width={500} height={300} margin={{ bottom: 100 }}
+			xType="time"
+			yDomain={[0, 10]}
+		>
 			<HorizontalGridLines className="gridline" />
 			<VerticalGridLines className="gridline" />
-			<XAxis title="X Axis" className="axis" />
-			<YAxis title="Y Axis" className="axis" />
+			<XAxis title="Date" className="axis" tickLabelAngle={-90}/>
+			<YAxis title="Mood" className="axis" />
 			<LineSeries
 				className="month-mood-chart"
 				data={[
-					{ x: 1, y: 3 },
-					{ x: 2, y: 5 },
-					{ x: 3, y: 15 },
-					{ x: 4, y: 12 },
+					{ x: new Date('01/01/2024'), y: 10 },
+					{ x: new Date('01/06/2024'), y: 5 },
+					{ x: new Date('01/07/2024'), y: 1 },
+					{ x: new Date('01/31/2024'), y: 4 },
 				]}
 			/>
 		</XYPlot>
