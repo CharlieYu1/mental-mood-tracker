@@ -10,13 +10,16 @@ import {
 } from "react-vis";
 
 
-function MoodChart() {
+function MoodChart({ firstDayOfMonth, lastDayOfMonth, moodData }) {
 
+	
 	return (
     <div className="containerStyle">
 		<XYPlot width={500} height={300} margin={{ bottom: 100 }}
 			xType="time"
 			yDomain={[0, 10]}
+			xDomain={[firstDayOfMonth, lastDayOfMonth]}
+			dontCheckIfEmpty
 		>
 			<HorizontalGridLines className="gridline" />
 			<VerticalGridLines className="gridline" />
@@ -24,12 +27,13 @@ function MoodChart() {
 			<YAxis title="Mood" className="axis" />
 			<LineSeries
 				className="month-mood-chart"
-				data={[
-					{ x: new Date('01/01/2024'), y: 10 },
-					{ x: new Date('01/06/2024'), y: 5 },
-					{ x: new Date('01/07/2024'), y: 1 },
-					{ x: new Date('01/31/2024'), y: 4 },
-				]}
+				data={moodData}
+				// data={[
+				// 	{ x: new Date('01/01/2024'), y: 10 },
+				// 	{ x: new Date('01/06/2024'), y: 5 },
+				// 	{ x: new Date('01/07/2024'), y: 1 },
+				// 	{ x: new Date('01/31/2024'), y: 4 },
+				// ]}
 			/>
 		</XYPlot>
     </div>

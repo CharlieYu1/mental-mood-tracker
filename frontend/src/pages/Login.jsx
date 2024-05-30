@@ -30,7 +30,8 @@ function Login() {
 		try {
 			const response = await userService.login({
 				username,
-				password
+				password,
+				rememberMe
 			})
 			setToken(response.token)
 			setUser(response.user)

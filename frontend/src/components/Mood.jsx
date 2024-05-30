@@ -12,17 +12,39 @@ import { AuthContext } from "../components/AuthContext";
 function Mood() {
 	const { token, user, loading } = useContext(AuthContext);
 	
+	const [ firstDayOfMonth, setFirstDayOfMonth ] = useState(new Date())
+	const [ lastDayOfMonth, setLastDayOfMonth ] = useState(new Date())
+	const [ monthlyMoodData, setMonthlyMoodData ] = useState([])
+
+	
 	// Initialize state for the current date
 	const [currentDate, setCurrentDate] = useState(dayjs());
+
+	
 	
 	useEffect(() => {
 		logsService.getMonthlyMoods(token, currentDate.format('YYYY-MM-DD')).then(res => {
-			console.log(res)
-	
+			const monthlyMoodsChartData = res.monthlyMoods.map(item => {
+				return {
+					x: new Date(item.date), y: item.mood
+				}
+			})
+			console.log(monthlyMoodsChartData)
+			setMonthlyMoodData(monthlyMoodsChartData)
+			
 		})
 		
 		
 	}, [token, currentDate])
+	
+	useEffect(() => {
+		// console.log(currentDate)
+		let year = currentDate["$y"]
+		let month = currentDate["$M"]
+		setFirstDayOfMonth(new Date(year, month, 1))
+		setLastDayOfMonth(new Date(year, month + 1, 0))
+	}, [currentDate])
+	
 	
 	// Navigate to the previous month
 	const goToPreviousMonth = () => {
@@ -67,7 +89,7 @@ function Mood() {
 		<h5>Monthly Mood Chart</h5>
 		</Card.Header>
 		<Card.Body>
-		<MoodChart/>
+		<MoodChart firstDayOfMonth={firstDayOfMonth} lastDayOfMonth={lastDayOfMonth} moodData={monthlyMoodData} />
 		</Card.Body>
 		</Card>
 		</Col>

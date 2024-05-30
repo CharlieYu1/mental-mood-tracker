@@ -153,13 +153,16 @@ exports.getMonthlyMoods = async (req, res, next) => {
             $lt: startOfNextMonth
         },
         user: userId
-    }).select({ "date": 1, "mood": 1}).then((values, err) => {
+    }).select({ "date": 1, "mood": 1}).then((monthlyMoods, err) => {
         if (err) {
             res.status(400).json({
                 message: "Error fetching monthly mood data from database"
             })
             return ;
         }
-        console.log("Values found: ", values)
+        res.json({
+            message: "fetched monthly mood records successfully",
+            monthlyMoods: monthlyMoods
+        })
     })
 }
