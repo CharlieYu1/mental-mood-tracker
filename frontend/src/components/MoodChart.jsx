@@ -11,15 +11,15 @@ import {
 
 
 function MoodChart({ firstDayOfMonth, lastDayOfMonth, moodData }) {
-	console.log(firstDayOfMonth)
-	console.log(lastDayOfMonth)
 
+	
 	return (
     <div className="containerStyle">
 		<XYPlot width={500} height={300} margin={{ bottom: 100 }}
 			xType="time"
 			yDomain={[0, 10]}
 			xDomain={[firstDayOfMonth, lastDayOfMonth]}
+			dontCheckIfEmpty
 		>
 			<HorizontalGridLines className="gridline" />
 			<VerticalGridLines className="gridline" />

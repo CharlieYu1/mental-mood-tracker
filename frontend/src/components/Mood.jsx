@@ -14,6 +14,8 @@ function Mood() {
 	
 	const [ firstDayOfMonth, setFirstDayOfMonth ] = useState(new Date())
 	const [ lastDayOfMonth, setLastDayOfMonth ] = useState(new Date())
+	const [ monthlyMoodData, setMonthlyMoodData ] = useState([])
+
 	
 	// Initialize state for the current date
 	const [currentDate, setCurrentDate] = useState(dayjs());
@@ -22,9 +24,16 @@ function Mood() {
 	
 	useEffect(() => {
 		logsService.getMonthlyMoods(token, currentDate.format('YYYY-MM-DD')).then(res => {
-			console.log(res)
+			const monthlyMoodsChartData = res.monthlyMoods.map(item => {
+				return {
+					x: new Date(item.date), y: item.mood
+				}
+			})
+			console.log(monthlyMoodsChartData)
+			setMonthlyMoodData(monthlyMoodsChartData)
 			
 		})
+		
 		
 	}, [token, currentDate])
 	
@@ -80,7 +89,7 @@ function Mood() {
 		<h5>Monthly Mood Chart</h5>
 		</Card.Header>
 		<Card.Body>
-		<MoodChart firstDayOfMonth={firstDayOfMonth} lastDayOfMonth={lastDayOfMonth} moodData={[ { x: new Date('05/01/2024'), y: 10 }, { x: new Date('05/05/2024'), y: 4 } ]} />
+		<MoodChart firstDayOfMonth={firstDayOfMonth} lastDayOfMonth={lastDayOfMonth} moodData={monthlyMoodData} />
 		</Card.Body>
 		</Card>
 		</Col>
