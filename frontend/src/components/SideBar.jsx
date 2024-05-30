@@ -152,7 +152,7 @@ function Sidebar({ show, setShow }) {
 					<NavItem className="sidebar-item">
 						<Nav.Link
 							as={Link}
-							to="/dashboard/logs"
+							to="/dashboard/setting"
 							className={
 								location.pathname === "/dashboard/setting"
 									? "nav-link active"
