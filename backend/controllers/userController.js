@@ -104,7 +104,8 @@ exports.login = async (req, res) => {
             return res.status(400).json({ message: "Invalid username" })
         }
 
-        
+        const timeToExpiry = req.body.rememberMe ? 3600 * 24 * 14 : 3600 * 6
+
         // 1- compare encrypted password with the password provided by user
         await bcrypt.compare(req.body.password, user.password, (err, isMatch) => {
             if (err) {
@@ -116,7 +117,7 @@ exports.login = async (req, res) => {
                     id: user.id,
                     isAdmin: user.isAdmin
                 },
-                secret,  { expiresIn: 3600 },
+                secret,  { expiresIn: timeToExpiry },
                 (err, token) => {
                     if (err) throw err;
                     else
