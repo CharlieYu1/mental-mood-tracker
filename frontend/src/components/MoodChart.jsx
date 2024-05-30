@@ -28,12 +28,6 @@ function MoodChart({ firstDayOfMonth, lastDayOfMonth, moodData }) {
 			<LineSeries
 				className="month-mood-chart"
 				data={moodData}
-				// data={[
-				// 	{ x: new Date('01/01/2024'), y: 10 },
-				// 	{ x: new Date('01/06/2024'), y: 5 },
-				// 	{ x: new Date('01/07/2024'), y: 1 },
-				// 	{ x: new Date('01/31/2024'), y: 4 },
-				// ]}
 			/>
 		</XYPlot>
     </div>

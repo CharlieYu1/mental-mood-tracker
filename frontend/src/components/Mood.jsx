@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import MoodChart from "../components/MoodChart";
+import MoodCountChart from "../components/MoodCountChart"
 
 import logsService from '../services/logs'
 import { AuthContext } from "../components/AuthContext";
@@ -99,7 +100,8 @@ function Mood() {
 		<h5>Monthly Mood Count</h5>
 		</Card.Header>
 		<Card.Body>
-		<Card.Text>TBC</Card.Text>
+		<MoodCountChart />
+		
 		</Card.Body>
 		</Card>
 		</Col>
