@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 function NavBar() {
 	const [expanded, setExpanded] = useState(false);
 
-	const { user, setUser, setToken } = useContext(AuthContext);
+	const { user, setUser, token, setToken } = useContext(AuthContext);
 	const navigate = useNavigate();
 
 	const handleLogout = async (e) => {
@@ -111,7 +111,7 @@ function NavBar() {
 					</Nav>
 
 					<Nav className="justify-content-end">
-						{!user && (
+						{!token && (
 							<Nav.Item>
 								<Nav.Link
 									as={Link}
@@ -123,7 +123,7 @@ function NavBar() {
 								</Nav.Link>
 							</Nav.Item>
 						)}
-						{!user && (
+						{!token && (
 							<Nav.Item>
 								<Nav.Link
 									as={Link}
@@ -135,7 +135,7 @@ function NavBar() {
 								</Nav.Link>
 							</Nav.Item>
 						)}
-						{user && (
+						{token && (
 							<Nav.Item onClick={handleLogout}>
 								<Nav.Link
 									as={Link}

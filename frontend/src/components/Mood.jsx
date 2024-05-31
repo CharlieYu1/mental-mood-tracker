@@ -30,7 +30,6 @@ function Mood() {
 					x: new Date(item.date), y: item.mood
 				}
 			})
-			console.log(monthlyMoodsChartData)
 			setMonthlyMoodData(monthlyMoodsChartData)
 			
 		})
@@ -100,7 +99,7 @@ function Mood() {
 		<h5>Monthly Mood Count</h5>
 		</Card.Header>
 		<Card.Body>
-		<MoodCountChart />
+		<MoodCountChart moodData={monthlyMoodData} />
 		
 		</Card.Body>
 		</Card>

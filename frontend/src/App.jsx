@@ -20,7 +20,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-	const { user, loading } = useContext(AuthContext);
+	const { token, loading } = useContext(AuthContext);
 	const [showSidebar, setShowSidebar] = useState(false);
 
 	if (loading) {
@@ -36,7 +36,7 @@ function App() {
 			<div className="main-content">
 				<Row className="gx-0">
 					<NavBar />
-					{user && (
+					{token && (
 					<div
 						onClick={handleToggleSidebar}
 						className="offcanvas-btn"
@@ -44,7 +44,7 @@ function App() {
 					<FontAwesomeIcon icon={faArrowRightArrowLeft} />
 					</div>
 					)}
-					{user && (
+					{token && (
 						<Col className="aside">
 							<Sidebar show={showSidebar} setShow={setShowSidebar} />
 						</Col>
