@@ -30,8 +30,8 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 
-import icon1 from "/assets/images/mood-icon-01.png";
-import icon10 from "/assets/images/mood-icon-05.png";
+import icon10 from "/assets/images/mood-icon-01.png";
+import icon1 from "/assets/images/mood-icon-05.png";
 
 import logsService from '../services/logs'
 import { AuthContext } from "../components/AuthContext";

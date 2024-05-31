@@ -20,7 +20,7 @@ function Login() {
 	const navigate = useNavigate()
 
 	const handleRememberMeChange = () => {
-			setRememberMe(!rememberMe);
+		setRememberMe(!rememberMe);
 	};
 
 	// handler for Login
@@ -36,12 +36,14 @@ function Login() {
 			setToken(response.token)
 			setUser(response.user)
 			localStorage.setItem('token', response.token)
+			localStorage.setItem('user', JSON.stringify(response.user))
 			navigate("/dashboard/mood")
 		} catch (error) {
 			console.error("Login failed:", error.response.data.message)
 			setToken(null)
 			setUser(null)
 			localStorage.removeItem('token')
+			localStorage.removeItem('user')
 
 			// error handling and error message
 			if (error.response && error.response.data.message) {

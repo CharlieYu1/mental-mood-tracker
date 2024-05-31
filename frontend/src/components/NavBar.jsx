@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 function NavBar() {
 	const [expanded, setExpanded] = useState(false);
 
-	const { user, setUser, setToken } = useContext(AuthContext);
+	const { user, setUser, token, setToken } = useContext(AuthContext);
 	const navigate = useNavigate();
 
 	const handleLogout = async (e) => {

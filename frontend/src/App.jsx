@@ -20,7 +20,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-	const { user, loading } = useContext(AuthContext);
+	const { user, token, loading } = useContext(AuthContext);
 	const [showSidebar, setShowSidebar] = useState(false);
 
 	if (loading) {
@@ -30,6 +30,9 @@ function App() {
 	const handleToggleSidebar = () => {
 		setShowSidebar(!showSidebar);
 	};
+
+	console.log("token: ", token)
+	console.log("user: ", user)
 
 	return (
 		<BrowserRouter>
