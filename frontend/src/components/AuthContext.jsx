@@ -8,10 +8,20 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        const storedToken = localStorage.getItem('token')
-        const storedUser = localStorage.getItem('user')
-        setToken(storedToken)
-        setUser(JSON.parse(storedUser))
+        try {
+            const storedToken = localStorage.getItem('token')
+            const storedUser = localStorage.getItem('user')
+            setToken(storedToken)
+            setUser(JSON.parse(storedUser))
+        } catch (e) {
+            // console.log("error caught: ", e)
+            // console.log(localStorage.getItem('token'))
+            // console.log(localStorage.getItem('user'))
+            localStorage.removeItem('token')
+            localStorage.removeItem('user')
+            setToken(null)
+            setUser(null)
+        }
         setLoading(false)
     }, [])
 

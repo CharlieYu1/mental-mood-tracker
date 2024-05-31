@@ -111,7 +111,7 @@ function NavBar() {
 					</Nav>
 
 					<Nav className="justify-content-end">
-						{!token && (
+						{!user && (
 							<Nav.Item>
 								<Nav.Link
 									as={Link}
@@ -123,7 +123,7 @@ function NavBar() {
 								</Nav.Link>
 							</Nav.Item>
 						)}
-						{!token && (
+						{!user && (
 							<Nav.Item>
 								<Nav.Link
 									as={Link}
@@ -135,7 +135,7 @@ function NavBar() {
 								</Nav.Link>
 							</Nav.Item>
 						)}
-						{token && (
+						{user && (
 							<Nav.Item onClick={handleLogout}>
 								<Nav.Link
 									as={Link}

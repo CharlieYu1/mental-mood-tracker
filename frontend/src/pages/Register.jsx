@@ -35,12 +35,14 @@ function Register() {
 			setToken(response.token)
 			setUser(response.user)
 			localStorage.setItem('token', response.token)
+			localStorage.setItem('user', JSON.stringify(response.user))
 			navigate("/dashboard/mood");
 		} catch (error) {
 			console.error("Registration failed:", error.response.data.message)
 			setToken(null)
 			setUser(null)
 			localStorage.removeItem('token')
+			localStorage.removeItem('user')
 			
 			// error handling and error message
 			if (error.response && error.response.data.message) {
