@@ -1,6 +1,8 @@
 const User = require('../models/UsersModel')
 const DailyLog = require('../models/dailyLog')
 
+const { startOfMonth, startOfNextMonth } = require('../helpers/date.js')
+
 const activitiesList = [
 	{ type: "social", name: "Family Time"},
 	{ type: "social", name: "Friend Hangout"},
@@ -25,6 +27,8 @@ const activitiesList = [
 	{ type: "meal", name: "Dinner"},
 	{ type: "meal", name: "Other Meals"}
 ]
+
+const activityTypes = Object.fromEntries(activitiesList.map(a => [a.name, a.type]))
 
 exports.saveLog = async (req, res, next) => {
 
@@ -128,31 +132,14 @@ exports.getMonthlyMoods = async (req, res, next) => {
     const userId = req.user.id;
     const date = req.query.date;
 
-    const [year, month] = date.split('-')
-
-    const startOfMonth = `${year}-${month}-01`
-
-    const startOfNextMonth = ( () => {
-        if (Number(month) < 9) {
-            return `${year}-0${Number(month)+1}-01`
-        } else if (Number(month) < 12) {
-            return `${year}-${Number(month)+1}-01`
-        } else {
-            return `${Number(year)+1}-01-01`
-        }
-    })()
-    
-    console.log(startOfMonth)
-    console.log(startOfNextMonth)
-    
-
     // fetch mood values only for the month
     await DailyLog.find({
         date: {
-            $gte: startOfMonth,
-            $lt: startOfNextMonth
+            $gte: startOfMonth(date),
+            $lt: startOfNextMonth(date)
         },
-        user: userId
+        user: userId,
+        mood: { $ne: null }
     }).select({ "date": 1, "mood": 1}).then((monthlyMoods, err) => {
         if (err) {
             res.status(400).json({
@@ -163,6 +150,74 @@ exports.getMonthlyMoods = async (req, res, next) => {
         res.json({
             message: "fetched monthly mood records successfully",
             monthlyMoods: monthlyMoods
+        })
+    })
+}
+
+exports.getMonthlySleepHours = async (req, res, next) => {
+    
+    const userId = req.user.id;
+    const date = req.query.date;
+
+    // fetch mood values only for the month
+    await DailyLog.find({
+        date: {
+            $gte: startOfMonth(date),
+            $lt: startOfNextMonth(date)
+        },
+        user: userId,
+        sleepDuration: { $ne: null }
+    }).select({ "date": 1, "sleepDuration": 1}).then((monthlySleepData, err) => {
+        if (err) {
+            res.status(400).json({
+                message: "Error fetching monthly sleep data from database"
+            })
+            return ;
+        }
+        res.json({
+            message: "fetched monthly sleep records successfully",
+            monthlySleepData: monthlySleepData
+        })
+    })
+}
+
+exports.getMonthlyActivitiesCount = async (req, res, next) => {
+    
+    const userId = req.user.id;
+    const date = req.query.date;
+    // fetch mood values only for the month
+    await DailyLog.find({
+        date: {
+            $gte: startOfMonth(date),
+            $lt: startOfNextMonth(date)
+        },
+        user: userId,
+    }).select({ "date": 1, "activities": 1}).then((activities, err) => {
+        if (err) {
+            res.status(400).json({
+                message: "Error fetching monthly activities from database"
+            })
+            return ;
+        }
+
+        let activitiesCount = {
+            "social": 0,
+            "hobbies": 0,
+            "exercises": 0,
+            "meal": 0,
+        }
+
+        activities.forEach((dailyLog) => {
+            for (let activity in dailyLog.activities) {
+                if (dailyLog.activities[activity]) {
+                    activitiesCount[activityTypes[activity]] += 1
+                }
+            }
+        })
+
+         res.json({
+            message: "fetched monthly activities successfully",
+            monthlyActivitiesCount: activitiesCount
         })
     })
 }

@@ -33,4 +33,24 @@ const getMonthlyMoods = async (token, date) => {
 
 }
 
-export default { getLog, saveLog, getMonthlyMoods }
+const getMonthlySleepHours = async (token, date) => {
+
+    const response = await axios.get(`${baseUrl}/getMonthlySleepHours`, {
+        headers: { 'Authorization': `Bearer ${token}`},
+        params: { date: date }
+    })
+    return response.data
+
+}
+
+const getMonthlyActivitiesCount = async (token, date) => {
+
+    const response = await axios.get(`${baseUrl}/getMonthlyActivitiesCount`, {
+        headers: { 'Authorization': `Bearer ${token}`},
+        params: { date: date }
+    })
+    return response.data
+
+}
+
+export default { getLog, saveLog, getMonthlyMoods, getMonthlySleepHours, getMonthlyActivitiesCount }

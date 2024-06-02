@@ -30,7 +30,7 @@ const auth = (req, res, next) => {
         next()
 
     } catch (e) {
-        console.log(e)
+
         res.status(400).json({ message: "Please log in" })
     }
 }
