@@ -9,4 +9,8 @@ router.get('/getLog', auth, dailyLogController.getLog)
 
 router.get('/getMonthlyMoods', auth, dailyLogController.getMonthlyMoods)
 
+router.get('/getMonthlySleepHours', auth, dailyLogController.getMonthlySleepHours)
+
+router.get('/getMonthlyActivitiesCount', auth, dailyLogController.getMonthlyActivitiesCount)
+
 module.exports = router;

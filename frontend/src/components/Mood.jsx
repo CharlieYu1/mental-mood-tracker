@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import MoodChart from "../components/MoodChart";
 import MoodCountChart from "../components/MoodCountChart"
+import SleepChart from "../components/SleepChart"
+import ActivitiesCountChart from "../components/ActivitiesCountChart"
 
 import logsService from '../services/logs'
 import { AuthContext } from "../components/AuthContext";
@@ -16,6 +18,8 @@ function Mood() {
 	const [ firstDayOfMonth, setFirstDayOfMonth ] = useState(new Date())
 	const [ lastDayOfMonth, setLastDayOfMonth ] = useState(new Date())
 	const [ monthlyMoodData, setMonthlyMoodData ] = useState([])
+	const [ monthlySleepHours, setMonthlySleepHours ] = useState([])
+	const [ monthlyActivitiesCount, setMonthlyActivitiesCount ] = useState({})
 
 	
 	// Initialize state for the current date
@@ -33,6 +37,19 @@ function Mood() {
 			setMonthlyMoodData(monthlyMoodsChartData)
 			
 		})
+		logsService.getMonthlySleepHours(token, currentDate.format('YYYY-MM-DD')).then(res => {
+			const monthlySleepHoursData = res.monthlySleepData.map(item => {
+				return {
+					x: new Date(item.date), y: item.sleepDuration / 60
+				}
+			})
+			setMonthlySleepHours(monthlySleepHoursData)
+		})
+		logsService.getMonthlyActivitiesCount(token, currentDate.format('YYYY-MM-DD')).then(res => {
+			setMonthlyActivitiesCount(res.monthlyActivitiesCount)
+			console.log(res.monthlyActivitiesCount)
+		})
+		
 		
 		
 	}, [token, currentDate])
@@ -113,7 +130,7 @@ function Mood() {
 		<h5>Monthly Sleeping Hours</h5>
 		</Card.Header>
 		<Card.Body>
-		<Card.Text>TBC</Card.Text>
+		<SleepChart firstDayOfMonth={firstDayOfMonth} lastDayOfMonth={lastDayOfMonth} sleepHours={monthlySleepHours} />
 		</Card.Body>
 		</Card>
 		</Col>
@@ -123,7 +140,7 @@ function Mood() {
 		<h5>Monthly Activities Counts</h5>
 		</Card.Header>
 		<Card.Body>
-		<Card.Text>TBC</Card.Text>
+		<ActivitiesCountChart activitiesCount={monthlyActivitiesCount} />
 		</Card.Body>
 		</Card>
 		</Col>
