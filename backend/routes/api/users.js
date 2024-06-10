@@ -7,4 +7,9 @@ router.post('/signup', users_validation.validateRegister, users_controller.creat
 
 router.post('/login', users_validation.validateLogin, users_controller.login)
 
+// TODO:
+// router.post('/upload-profile-image', auth, users_controllers.uploadProfileImage)
+// TODO:
+// router.post('/change-password', auth, users_controllers.changePassword)
+
 module.exports = router;
