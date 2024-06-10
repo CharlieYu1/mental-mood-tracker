@@ -11,4 +11,8 @@ const signup = async credentials => {
   return response.data
 }
 
+// TODO:
+// const uploadProfileImage = {}
+// const changePassword = {}
+
 export default { login, signup }
