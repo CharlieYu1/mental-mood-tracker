@@ -28,19 +28,18 @@ function Login() {
 		// TODO
 		e.preventDefault()
 		try {
-			const formData = new formData();
-			formData.append('username', username)
-			formData.append('password', password)
-			formData.append('rememberMe', rememberMe)
-
-			const response = await userService.login(formData)
+			const response = await userService.login({
+				username,
+				password,
+				rememberMe
+			})
 			setToken(response.token)
 			setUser(response.user)
 			localStorage.setItem('token', response.token)
 			localStorage.setItem('user', JSON.stringify(response.user))
 			navigate("/dashboard/mood")
 		} catch (error) {
-			console.error("Login failed:", error.response?.data?.message)
+			console.error("Login failed:", error.response.data.message)
 			setToken(null)
 			setUser(null)
 			localStorage.removeItem('token')
