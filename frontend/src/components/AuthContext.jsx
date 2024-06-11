@@ -14,9 +14,7 @@ export const AuthProvider = ({ children }) => {
             setToken(storedToken)
             setUser(JSON.parse(storedUser))
         } catch (e) {
-            // console.log("error caught: ", e)
-            // console.log(localStorage.getItem('token'))
-            // console.log(localStorage.getItem('user'))
+
             localStorage.removeItem('token')
             localStorage.removeItem('user')
             setToken(null)

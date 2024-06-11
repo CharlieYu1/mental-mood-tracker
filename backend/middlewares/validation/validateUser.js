@@ -1,4 +1,4 @@
-const { body, validationResult } = require('express-validator')
+const { body, check, validationResult } = require('express-validator')
 
 // usage of validation chains: an array of validation criteria, last item is a function
 
@@ -38,6 +38,7 @@ exports.validateLogin = [
     .withMessage("must be at least 8 characters").trim().escape(),
 
     (req, res, next) => {
+        // console.log(req)
         
         const errors = validationResult(req)
 

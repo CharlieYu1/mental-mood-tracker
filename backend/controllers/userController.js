@@ -94,6 +94,7 @@ exports.createUser = async (req, res, next) => {
 }
 
 exports.login = async (req, res) => {
+    // console.log(req)
     
     await User.findOne({ username: req.body.username }).then(async (user, err) => {
         if (err) {

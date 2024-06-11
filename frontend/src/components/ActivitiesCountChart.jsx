@@ -11,7 +11,8 @@ import {
 
 
 function ActivitiesCountChart({ activitiesCount }) {
-    if (!activitiesCount) {
+    console.log(activitiesCount)
+    if (Object.keys(activitiesCount).length === 0) {
         return <p>Log activities to see the monthly activity counts</p>
     }
 

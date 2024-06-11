@@ -31,9 +31,6 @@ function App() {
 		setShowSidebar(!showSidebar);
 	};
 
-	console.log("token: ", token)
-	console.log("user: ", user)
-
 	return (
 		<BrowserRouter>
 			<div className="main-content">
