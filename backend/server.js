@@ -41,7 +41,6 @@ const storage = multer.diskStorage({
   }
 })
 
-const upload = multer({ storage })
 
 // Connection port for app
 const PORT = process.env.PORT || 3000;
@@ -49,3 +48,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is connected on port ${PORT}`);
 });
+
+module.exports = { storage }

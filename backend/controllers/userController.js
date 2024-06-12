@@ -139,11 +139,9 @@ exports.login = async (req, res) => {
     })
 }
 
-// TODO:
+exports.uploadProfileImage = async (req, res) => {
 
-// export.uploadProfileImage = async (req, res) => {
-
-// }
+}
 
 // export.changePassword = async (req, res) => {
 
