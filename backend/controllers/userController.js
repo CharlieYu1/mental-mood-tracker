@@ -140,7 +140,19 @@ exports.login = async (req, res) => {
 }
 
 exports.uploadProfileImage = async (req, res) => {
+    const userId = req.user.id
+    // console.log(req)
 
+    await User.find({ _id: userId }).then((user, err) => {
+        if (err) {
+            res.status(400).json({
+                message: "Error uploading profile image"
+            })
+        } else {
+            console.log(req.file.path)
+        }
+
+    })
 }
 
 // export.changePassword = async (req, res) => {
