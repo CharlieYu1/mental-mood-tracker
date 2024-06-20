@@ -26,6 +26,9 @@ router.post('/login', users_validation.validateLogin, users_controller.login)
 
 router.post('/upload-profile-image', auth, upload.single('profileImage'), users_controller.uploadProfileImage)
 
+// no auth needed to get profile image currently
+router.get('/profile-image/:fileName', users_controller.getProfileImage)
+
 // TODO:
 // router.post('/change-password', auth, users_controllers.changePassword)
 

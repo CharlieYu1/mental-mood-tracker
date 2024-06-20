@@ -143,16 +143,35 @@ exports.uploadProfileImage = async (req, res) => {
     const userId = req.user.id
     // console.log(req)
 
-    await User.find({ _id: userId }).then((user, err) => {
-        if (err) {
-            res.status(400).json({
-                message: "Error uploading profile image"
+    try {
+        user = await User.findOne({ _id: userId })
+        user.profileImage = req.file.filename
+        console.log(user)
+        user.save().then(savedUser => {
+            res.status(201).json({
+                message: "Profile image uploaded successfully",
+                filename: savedUser.profileImage
             })
-        } else {
-            console.log(req.file.path)
-        }
+            console.log("Profile Image Uploaded: ", savedUser.profileImage)
+        }).catch(err => {
+            res.status(400).json({
+                message: "Failed to save profile Image",
+                error: err.message
+            })
+            console.log("Profile Image Upload failed: ", err.message)
+        })
+        
+    } catch (err) {
+        res.status(400).json({
+            message: "Error uploading profile Image",
+            error: err.message
+        })
+    }
+}
 
-    })
+exports.getProfileImage = async (req, res) => {
+    console.log(req.params.fileName)
+    res.sendFile(req.params.fileName, { root: './uploads'})
 }
 
 // export.changePassword = async (req, res) => {
