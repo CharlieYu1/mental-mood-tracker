@@ -47,7 +47,7 @@ function Mood() {
 		})
 		logsService.getMonthlyActivitiesCount(token, currentDate.format('YYYY-MM-DD')).then(res => {
 			setMonthlyActivitiesCount(res.monthlyActivitiesCount)
-			console.log(res.monthlyActivitiesCount)
+			// console.log(res.monthlyActivitiesCount)
 		})
 		
 		

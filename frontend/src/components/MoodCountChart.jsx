@@ -23,10 +23,10 @@ function MoodCountChart({ moodData }) {
 
     const data = [
         { angle: groupedCounts[0], label: groupedLabels[0], color: '#264653' },
-        { angle: groupedCounts[1], label: groupedLabels[1],  color: '#2a9d8f' },
-        { angle: groupedCounts[2], label: groupedLabels[2],  color: '#e9c46a' },
-        { angle: groupedCounts[3], label: groupedLabels[3],  color: '#f4a261' },
-        { angle: groupedCounts[4], label: groupedLabels[4],  color: '#e76f51' },
+        { angle: groupedCounts[1], label: groupedLabels[1], color: '#2a9d8f' },
+        { angle: groupedCounts[2], label: groupedLabels[2], color: '#e9c46a' },
+        { angle: groupedCounts[3], label: groupedLabels[3], color: '#f4a261' },
+        { angle: groupedCounts[4], label: groupedLabels[4], color: '#e76f51' },
     ]
 
     const averageMood = moodData.reduce((val, m) => m.y + val, 0) / totalMoodCounts

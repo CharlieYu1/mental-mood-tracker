@@ -81,7 +81,8 @@ exports.createUser = async (req, res, next) => {
                         id: user.id,
                         username: user.username,
                         email: user.email,
-                        isAdmin: user.isAdmin
+                        isAdmin: user.isAdmin,
+                        profileImage: ''
                     }
                 })
         })
@@ -128,7 +129,8 @@ exports.login = async (req, res) => {
                                 id: user.id,
                                 username: user.username,
                                 email: user.email,
-                                isAdmin: user.isAdmin
+                                isAdmin: user.isAdmin,
+                                profileImage: user.profileImage
                             }
                         })
                 })
@@ -139,11 +141,39 @@ exports.login = async (req, res) => {
     })
 }
 
-// TODO:
+exports.uploadProfileImage = async (req, res) => {
+    const userId = req.user.id
+    console.log(req.user.id)
 
-// export.uploadProfileImage = async (req, res) => {
+    try {
+        user = await User.findOne({ _id: userId })
+        user.profileImage = req.file.filename
+        user.save().then(savedUser => {
+            res.status(201).json({
+                message: "Profile image uploaded successfully",
+                filename: savedUser.profileImage
+            })
+            console.log(savedUser)
+            console.log("Profile Image Uploaded: ", savedUser.profileImage)
+        }).catch(err => {
+            res.status(400).json({
+                message: "Failed to save profile Image",
+                error: err.message
+            })
+            console.log("Profile Image Upload failed: ", err.message)
+        })
+        
+    } catch (err) {
+        res.status(400).json({
+            message: "Error uploading profile Image",
+            error: err.message
+        })
+    }
+}
 
-// }
+exports.getProfileImage = async (req, res) => {
+    res.sendFile(req.params.fileName, { root: './uploads'})
+}
 
 // export.changePassword = async (req, res) => {
 

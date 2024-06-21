@@ -1,5 +1,4 @@
 const express = require('express');
-const multer = require('multer');
 const path = require('path');
 
 const mongoose = require('mongoose')
@@ -31,17 +30,7 @@ if (process.env.NODE_ENV === 'test') {
     app.use('/api/testing', testingRouter)
 }
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads/')
-  },
-  filename: (req, file, cb) => {
-    // console.log(req) TODO: check to include userId of file
-    cb(null, Date.now() + path.extname(file.originalFilename))
-  }
-})
 
-const upload = multer({ storage })
 
 // Connection port for app
 const PORT = process.env.PORT || 3000;
