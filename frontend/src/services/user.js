@@ -23,8 +23,13 @@ const uploadProfileImage = async (file, token) => {
   return response.data
 }
 
+const getProfileImageUrl = (filename) => {
+  // return link to filename
+  return baseUrl + '/profile-image/' + filename
+}
+
 // TODO:
 
 // const changePassword = {}
 
-export default { login, signup, uploadProfileImage }
+export default { login, signup, uploadProfileImage, getProfileImageUrl }

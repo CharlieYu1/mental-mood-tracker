@@ -81,7 +81,8 @@ exports.createUser = async (req, res, next) => {
                         id: user.id,
                         username: user.username,
                         email: user.email,
-                        isAdmin: user.isAdmin
+                        isAdmin: user.isAdmin,
+                        profileImage: ''
                     }
                 })
         })
@@ -128,7 +129,8 @@ exports.login = async (req, res) => {
                                 id: user.id,
                                 username: user.username,
                                 email: user.email,
-                                isAdmin: user.isAdmin
+                                isAdmin: user.isAdmin,
+                                profileImage: user.profileImage
                             }
                         })
                 })
@@ -141,17 +143,17 @@ exports.login = async (req, res) => {
 
 exports.uploadProfileImage = async (req, res) => {
     const userId = req.user.id
-    // console.log(req)
+    console.log(req.user.id)
 
     try {
         user = await User.findOne({ _id: userId })
         user.profileImage = req.file.filename
-        console.log(user)
         user.save().then(savedUser => {
             res.status(201).json({
                 message: "Profile image uploaded successfully",
                 filename: savedUser.profileImage
             })
+            console.log(savedUser)
             console.log("Profile Image Uploaded: ", savedUser.profileImage)
         }).catch(err => {
             res.status(400).json({
@@ -170,7 +172,6 @@ exports.uploadProfileImage = async (req, res) => {
 }
 
 exports.getProfileImage = async (req, res) => {
-    console.log(req.params.fileName)
     res.sendFile(req.params.fileName, { root: './uploads'})
 }
 

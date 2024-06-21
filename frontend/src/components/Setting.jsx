@@ -5,21 +5,28 @@ import { AuthContext } from "../components/AuthContext";
 
 function Setting() {
     
-    const { token, user, loading } = useContext(AuthContext);
+    const { token, user, setUser, loading } = useContext(AuthContext);
     const [profileImage, setProfileImage] = useState('')  
 
     useEffect(() => {
         // TODO: fetch profile image using services
+        console.log("user data from Settings.js", user)
 
-        setProfileImage(user.profileImage) 
+        setProfileImage(user.profileImage)
     }, [user])
 
     const handleImageUpload = async (e) => {
         const file = e.target.files[0];
-        console.log(token)
         try {
             const response = await userService.uploadProfileImage( file, token )
-            console.log(response)
+            setUser({
+                ...user,
+                profileImage: response.filename
+            })
+            localStorage.setItem('user', JSON.stringify({
+                ...user,
+                profileImage: response.filename
+            }))
         } catch (error) {
             console.error("Upload failed", error)
         }
@@ -45,8 +52,11 @@ function Setting() {
             </div>
             <div className="profile-image">
                 <h2>Profile Picture</h2>
-                {profileImage && <img src={profileImage} alt="Profile" />}
-                <input type="file" accept="image/jpeg, image/png" onChange={handleImageUpload} />
+
+                {profileImage && <img src={userService.getProfileImageUrl(profileImage)} alt="Profile" />}
+                <div className="upload-image">
+                    <input type="file" accept="image/jpeg, image/png" onChange={handleImageUpload} />
+                </div>
             </div>
 
         </div>

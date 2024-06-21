@@ -12,6 +12,8 @@ import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "./AuthContext";
 import { NavItem, Offcanvas } from "react-bootstrap";
 
+import userService from '../services/user'
+
 function Sidebar({ show, setShow }) {
 	const { user } = useContext(AuthContext);
 	const location = useLocation();
@@ -27,7 +29,7 @@ function Sidebar({ show, setShow }) {
 					<div className="offcanvas-sidebar">
 						<div className="sidebar-user">
 							<Image
-								src="../assets/images/user-photo.jpg"
+								src={user.profileImage ? userService.getProfileImageUrl(user.profileImage) : "../assets/images/user-photo.jpg"}
 								roundedCircle
 								className="sidebar-img"
 							/>
@@ -102,7 +104,7 @@ function Sidebar({ show, setShow }) {
 			<div className="sidebar">
 				<div className="sidebar-user">
 					<Image
-						src="../assets/images/user-photo.jpg"
+						src={user.profileImage ? userService.getProfileImageUrl(user.profileImage) : "../assets/images/user-photo.jpg"}
 						roundedCircle
 						className="sidebar-img"
 					/>
